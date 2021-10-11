@@ -14,28 +14,3 @@ def station_id_handler(hour, min, am_pm):
     else:
         #play a non-legal ID
         pass
-
-    if hour=1:
-        pass
-    elif hour=2:
-        pass
-    elif hour=3:
-        pass
-    elif hour=4:
-        pass
-    elif hour=5:
-        pass
-    elif hour=6:
-        pass
-    elif hour=7:
-        pass
-    elif hour=8:
-        pass
-    elif hour=9:
-        pass
-    elif hour=10:
-        pass
-    elif hour=11:
-        pass
-    elif hour=12:
-        pass
