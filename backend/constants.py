@@ -1,5 +1,12 @@
 from enum import Enum, unique
 
+MEDIA_ROOT_DIRECTORY = "/this/is/the/media/directory"
+TIME_SUBDIRECTORY = "/time"
+PLAYLISTS_SUBDIRECTORY = "/playlists"
+HOUR_SUBDIRECTORY = "/hours/"
+MINUTE_SUBDIRECTORY = "/minutes/"
+AM_PM_SUBDIRECTORY = "/ampm/"
+IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 
 @unique
 class ConstantStrings(Enum):
