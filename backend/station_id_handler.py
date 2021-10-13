@@ -12,5 +12,3 @@ def station_id_handler(min):
     else:
         #play a non-legal ID
         player.play("backend/non-legal-station-IDs/"+random.choice(os.listdir("backend/non-legal-station-IDs")))
-
-station_id_handler(30)
