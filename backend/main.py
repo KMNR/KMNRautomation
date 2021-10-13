@@ -22,8 +22,8 @@ def main():
     cfg = configparser.ConfigParser()
     cfg.read("settings.ini")
     edu_time_delay = int(cfg["General"]["edu_time_delay"])
-    debug = bool(cfg["General"]["debug_logging"])
-
+    debug = True if cfg["General"]["debug_logging"] == "true" else False
+    print(debug)
     # Core loop begins here
     while run_automation:
         # Check current time
