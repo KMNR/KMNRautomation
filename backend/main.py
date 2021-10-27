@@ -39,7 +39,7 @@ def main():
             played_top_hour = True
             played_20_mins = False
             played_40_mins = False
-            station_id_handler(hours, minutes, am_pm)
+            station_id_handler(minutes)
 
         # 20 minutes past ID
         if 18 < minutes < 25 and not played_20_mins:
@@ -47,7 +47,7 @@ def main():
             played_20_mins = True
             played_top_hour = False
             played_40_mins = False
-            station_id_handler(hours, minutes, am_pm)
+            station_id_handler(minutes)
 
         # 40 minutes past ID
         if minutes > 38 and not played_40_mins:
@@ -55,7 +55,7 @@ def main():
             played_40_mins = True
             played_top_hour = False
             played_20_mins = False
-            station_id_handler(hours, minutes, am_pm)
+            station_id_handler(minutes)
 
         # Check for educational segment
         # If we haven't played an educational segment in edu_time_delay seconds
