@@ -1,11 +1,13 @@
 from enum import Enum, unique
 
-MEDIA_ROOT_DIRECTORY = "/this/is/the/media/directory"
+MEDIA_ROOT_DIRECTORY = "this/is/the/media/directory"
 TIME_SUBDIRECTORY = "/time"
 PLAYLISTS_SUBDIRECTORY = "/playlists"
 HOUR_SUBDIRECTORY = "/hours/"
 MINUTE_SUBDIRECTORY = "/minutes/"
 AM_PM_SUBDIRECTORY = "/ampm/"
+LEGAL_STATION_ID_SUBDIRECTORY = "/legalstationid/"
+NONLEGAL_STATION_ID_SUBDIRECTORY = "/nonlegalstationid/"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 
 @unique
