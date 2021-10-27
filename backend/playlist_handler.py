@@ -1,6 +1,7 @@
 import os
 from backend.constants import MEDIA_ROOT_DIRECTORY, PLAYLISTS_SUBDIRECTORY, IGNORED_FILE_EXTENSIONS
 import random
+import player
 
 test = True
 
@@ -16,7 +17,7 @@ def playlist_handler():
         for song in songs:
             print(playlist_path + "/" + song)
     for song in songs:
-        media_player(playlist_path + "/" + song)
+        player.play(playlist_path + "/" + song)
 
 
 if __name__ == "__main__":

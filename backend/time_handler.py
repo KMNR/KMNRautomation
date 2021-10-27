@@ -2,8 +2,8 @@ from backend.constants import MEDIA_ROOT_DIRECTORY, TIME_SUBDIRECTORY, HOUR_SUBD
     AM_PM_SUBDIRECTORY
 import random
 import os
+import player
 
-random.seed()
 test = True
 
 
@@ -11,6 +11,7 @@ test = True
 # Description: Chooses a random file from the provided media root directory for hour, minute second
 # and passes the absolute file path as an argument to the media handler function.
 def time_handler(hour, minute, am_pm):
+    random.seed()
     if test:
         MEDIA_ROOT_DIRECTORY = "../media"
     print(os.listdir(MEDIA_ROOT_DIRECTORY))
@@ -28,9 +29,9 @@ def time_handler(hour, minute, am_pm):
         print(hr_audio_to_play)
         print(min_audio_to_play)
         print(am_pm_to_play)
-    audio_player(hr_audio_to_play)
-    audio_player(min_audio_to_play)
-    audio_player(am_pm_to_play)
+    player.play(hr_audio_to_play)
+    player.play(min_audio_to_play)
+    player.play(am_pm_to_play)
 
 
 if __name__ == "__main__":
