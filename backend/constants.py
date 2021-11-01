@@ -6,11 +6,12 @@ PLAYLISTS_SUBDIRECTORY = "/playlists"
 HOUR_SUBDIRECTORY = "/hours/"
 MINUTE_SUBDIRECTORY = "/minutes/"
 AM_PM_SUBDIRECTORY = "/ampm/"
+WEATHER_SUBDIRECTORY = "/weather/"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&units=imperial&appid={}"
 
-WEATHER_SCRIPT = "Now for today's forecast. The high is {} degrees, and the low is {} degrees. I would best describe" \
-                 " the forecast as {}. Currently, it is {} degrees, and it feels like {} degrees. The humidity is {}" \
+WEATHER_SCRIPT = "Now for today's weather. The high today is {} degrees, and the low is {}. I would best describe" \
+                 " the forecast as {}. Currently, it is {} degrees, and it feels like {}. The humidity is {}" \
                  " percent, and I would say the current conditions are {}."
 
 

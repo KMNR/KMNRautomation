@@ -1,9 +1,15 @@
 import requests
 import configparser
-from constants import WEATHER_API_URL, WEATHER_SCRIPT
+from constants import WEATHER_API_URL, WEATHER_SCRIPT, MEDIA_ROOT_DIRECTORY, WEATHER_SUBDIRECTORY
+import time
+from gtts import gTTS
+
+test = True
 
 
 def main():
+    if test:
+        MEDIA_ROOT_DIRECTORY = "../media"
     cfg = configparser.ConfigParser()
     cfg.read("settings.ini")
     api_key = cfg["Weather"]["owm_api_key"]
@@ -32,8 +38,11 @@ def main():
         # Generate weather forecast script
         script = WEATHER_SCRIPT.format(todays_max, todays_min, todays_forecast, current_temp, feels_like
                                        , current_humidity, current_weather_description)
-        print(script)
-        # TODO: Generate TTS file
+        tts = gTTS(script, lang='en')
+
+        # Saves as weather-{year}-{month}-{day}-{hour}-{minute}-{am/pm}.mp3
+        filename = "weather-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
+        tts.save(MEDIA_ROOT_DIRECTORY + WEATHER_SUBDIRECTORY + filename)
 
 
 if __name__ == "__main__":
