@@ -3,6 +3,8 @@ import os
 from datetime import datetime
 from mutagen.mp3 import MP3
 import platform
+import soundfile as sf
+import pathlib
 
 test=True
 
@@ -21,8 +23,13 @@ def play(filePath):
         elif opSystem=="Linux":
             played=(os.system("/usr/bin/mpv --no-terminal"+filePath))
 
-        #this can be removed for testing purposes if we don't want to wait for entire files to play
-        time.sleep(int(MP3(filePath).info.length)+2)
+        #sleep can be removed for testing purposes if we don't want to wait for entire files to play
+        #we have to get the length differently depending on the file type
+        if(pathlib.Path(filePath).suffix==".mp3"):
+            time.sleep(int(MP3(filePath).info.length)+2)
+        else:
+            f=sf.SoundFile(filePath)
+            time.sleep(int((f.frames)/(f.samplerate)+2))
 
     except:
         print("Couldn't play file!")
