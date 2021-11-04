@@ -5,6 +5,8 @@ import os
 
 import playlist_handler
 import station_id_handler
+import time_handler
+import programming_handler
 import constants
 
 random.seed()
@@ -22,6 +24,7 @@ def main():
 
     # set time of last educational segment play to epoch
     last_edu_segment_time = 1
+    edu_segs_this_hour = 0
 
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
@@ -51,7 +54,9 @@ def main():
             played_top_hour = True
             played_20_mins = False
             played_40_mins = False
+            edu_segs_this_hour = 0
             station_id_handler.station_id_handler(minutes)
+            time_handler.time_handler(hours, minutes, am_pm)
 
         # 20 minutes past ID
         if 18 < minutes < 25 and not played_20_mins:
@@ -60,6 +65,7 @@ def main():
             played_top_hour = False
             played_40_mins = False
             station_id_handler.station_id_handler(minutes)
+            time_handler.time_handler(hours, minutes, am_pm)
 
         # 40 minutes past ID
         if minutes > 38 and not played_40_mins:
@@ -68,6 +74,7 @@ def main():
             played_top_hour = False
             played_20_mins = False
             station_id_handler.station_id_handler(minutes)
+            time_handler.time_handler(hours, minutes, am_pm)
 
         #this needs to be changed. we should be pulling which educational segment to play
         #   from KELP or a config, not choosing one to play randomly
@@ -75,9 +82,11 @@ def main():
         # If we haven't played an educational segment in edu_time_delay seconds
         if (current_epoch_time - edu_time_delay) > last_edu_segment_time:
             print(constants.ConstantStrings.PLAYING_EDU_SEGMENT)
+
             last_edu_segment_time = current_epoch_time
             # Play educational segment here
-            continue
+            if(programming_handler.programming_handler(edu_segs_this_hour, hours, am_pm)):
+                edu_segs_this_hour+=1
 
         # Choose the next playlist
         while(current_playlist_path in recent_playlists):
