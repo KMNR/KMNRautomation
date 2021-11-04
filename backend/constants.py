@@ -1,6 +1,7 @@
 from enum import Enum, unique
 
-MEDIA_ROOT_DIRECTORY = "this/is/the/media/directory"
+MEDIA_ROOT_DIRECTORY = "/this/is/the/media/directory/"
+BACKEND_ROOT_DIRECTORY = "backend/"
 TIME_SUBDIRECTORY = "/time"
 PLAYLISTS_SUBDIRECTORY = "/playlists"
 TIMEIS_SUBDIRECTORY = "/timeis/"
@@ -9,7 +10,10 @@ MINUTE_SUBDIRECTORY = "/minutes/"
 AM_PM_SUBDIRECTORY = "/ampm/"
 LEGAL_STATION_ID_SUBDIRECTORY = "/legalstationid/"
 NONLEGAL_STATION_ID_SUBDIRECTORY = "/nonlegalstationid/"
+PROGRAMMING_SUBDIRECTORY = "/programming/"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
+MP3_SEGS = ("PSA","ad-council","profile-america","ascertainment","earth-date","science-and-the-sea")
+TTS_SEGS = ("town-and-campus","news-and-weather","concert-news")
 
 @unique
 class ConstantStrings(Enum):
