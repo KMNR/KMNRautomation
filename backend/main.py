@@ -69,6 +69,8 @@ def main():
             played_20_mins = False
             station_id_handler.station_id_handler(minutes)
 
+        #this needs to be changed. we should be pulling which educational segment to play
+        #   from KELP or a config, not choosing one to play randomly
         # Check for educational segment
         # If we haven't played an educational segment in edu_time_delay seconds
         if (current_epoch_time - edu_time_delay) > last_edu_segment_time:
@@ -77,13 +79,14 @@ def main():
             # Play educational segment here
             continue
 
-        # Play song
+        # Choose the next playlist
         while(current_playlist_path in recent_playlists):
             current_playlist_path = constants.MEDIA_ROOT_DIRECTORY + constants.PLAYLISTS_SUBDIRECTORY + "/" + random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY + constants.PLAYLISTS_SUBDIRECTORY))
 
         current_song_index = playlist_handler.playlist_handler(current_playlist_path, current_song_index)
         print(constants.ConstantStrings.PLAYING_SONG)
 
+        #after a playlist ends,
         if current_song_index==-1:
             #update the list of recently played playlists
             recent_playlists.pop()

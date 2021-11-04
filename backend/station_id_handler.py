@@ -18,12 +18,12 @@ def station_id_handler(min):
     if min<5 or min>55:
         player.play(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY)))
     else:
+        #player.play(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY)))
         #play a legal or non-legal ID
         if random.choice((0,1))==0:
             player.play(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY)))
         else:
             player.play(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY)))
-
 
 if __name__ == '__main__':
     station_id_handler(30)
