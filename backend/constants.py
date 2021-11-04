@@ -3,6 +3,7 @@ from enum import Enum, unique
 MEDIA_ROOT_DIRECTORY = "this/is/the/media/directory"
 TIME_SUBDIRECTORY = "/time"
 PLAYLISTS_SUBDIRECTORY = "/playlists"
+TIMEIS_SUBDIRECTORY = "/timeis/"
 HOUR_SUBDIRECTORY = "/hours/"
 MINUTE_SUBDIRECTORY = "/minutes/"
 AM_PM_SUBDIRECTORY = "/ampm/"

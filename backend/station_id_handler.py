@@ -6,7 +6,11 @@ import player
 import constants
 random.seed(datetime.now())
 
+test=True
+
 def station_id_handler(min):
+    if test:
+        constants.MEDIA_ROOT_DIRECTORY="media"
     #if close to the top of the hour, play a legal id
     if min<10 or min>50:
         player.play(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY)))
