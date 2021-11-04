@@ -1,5 +1,4 @@
 import random, os
-import time
 from datetime import datetime
 from mutagen.mp3 import MP3
 import player
