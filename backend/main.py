@@ -37,7 +37,7 @@ def main():
     debug = True if cfg["General"]["debug_logging"] == "true" else False
     print(debug)
     '''
-    edu_time_delay = 1500
+    edu_time_delay = 1200
     # Core loop begins here
     while run_automation:
         # Check current time
