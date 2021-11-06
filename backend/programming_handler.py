@@ -20,16 +20,17 @@ def programming_handler(segs_played, hour, am_pm):
     #print(hourly_segs_count)
 
     if (segs_played>=hourly_segs_count):
+        print("already played required educational segments for the hour!")
         return 0
     else:
         #put the programming schedule into a list to be parsed easily
-        with open(constants.BACKEND_ROOT_DIRECTORY+'daily_programming_schedule.txt', newline='\n') as f:
+        with open(constants.BACKEND_ROOT_DIRECTORY+constants.PROGRAMMING_SCHEDULE_PATH, newline='\n') as f:
             reader = csv.reader(f)
             data = list(reader)
 
         for set in data:
             #find the time that matches the current time
-            if (int(set[0])==hour and set[1].strip()==am_pm):
+            if (int(set[0])==int(hour) and set[1].strip().lower()==am_pm.lower()):
                 #if there hasn't been a segment played this hour, play the first segment assigned for this hour
                 if segs_played==0:
                     seg_to_play=set[2]
@@ -42,14 +43,25 @@ def programming_handler(segs_played, hour, am_pm):
         #if it's an mp3 segment, give the file path to the player function
         if seg_to_play.strip() in constants.MP3_SEGS:
             #profile america is special because there are specific ones for each date
-            if seg_to_play=="profile-america":
+            if seg_to_play==constants.PROFILE_AMERICA_SUBDIRECTORY:
                 print("play profile america here")
+                #placeholder since we can't play pa yet
+                return(1)
+            #if there are subdirectories for that programming type, choose a subdirectory and an mp3 file
+            elif seg_to_play in constants.ADDITIONAL_SUBDIRECTORY_SEGS:
+                chosen_subdirectory=random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip()))
+                return(player.play(constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip() + '/' + chosen_subdirectory + '/' + random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip() + '/' + chosen_subdirectory))))
             else:
                 return(player.play(constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip() + '/' + random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip()))))
         #otherwise, call the appropriate handler for that programming:
         #   town and campus news, news and weather, or concert news
-        else:
+        elif seg_to_play.strip() in constants.TTS_SEGS:
             print("play TTS programming here")
+            #placeholder since we can't play tts programming yet
+            return(1)
+        else:
+            print("couldn't recognize the file as a valid edu segment!")
+            return(0)
 
 if __name__ == '__main__':
-    programming_handler(0, 11, "am")
+    programming_handler(0, 1, "am")
