@@ -36,8 +36,10 @@ def programming_handler(segs_played, hour, am_pm):
                     seg_to_play=set[2]
                     break
                 #if there's already been a segment played this hour, play the second segment assigned for this hour
-                elif segs_played==1:
+                elif len(set)>=4 and segs_played==1:
                     seg_to_play=set[3]
+                    break
+                else:
                     break
 
         #if it's an mp3 segment, give the file path to the player function
@@ -64,4 +66,4 @@ def programming_handler(segs_played, hour, am_pm):
             return(0)
 
 if __name__ == '__main__':
-    programming_handler(0, 1, "am")
+    programming_handler(1, 5, "pm")
