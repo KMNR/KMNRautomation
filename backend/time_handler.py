@@ -2,8 +2,8 @@ import constants
 import random
 import player
 import os
+import player
 
-random.seed()
 test = True
 
 
@@ -11,6 +11,7 @@ test = True
 # Description: Chooses a random file from the provided media root directory for hour, minute second
 # and passes the absolute file path as an argument to the media handler function.
 def time_handler(hour, minute, am_pm):
+    random.seed()
     if test:
         constants.MEDIA_ROOT_DIRECTORY = "media"
         print(os.listdir(constants.MEDIA_ROOT_DIRECTORY))

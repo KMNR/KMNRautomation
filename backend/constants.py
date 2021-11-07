@@ -14,6 +14,14 @@ PROGRAMMING_SUBDIRECTORY = "/programming/"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 MP3_SEGS = ("PSA","ad-council","profile-america","ascertainment","earth-date","science-and-the-sea")
 TTS_SEGS = ("town-and-campus","news-and-weather","concert-news")
+WEATHER_SUBDIRECTORY = "/weather/"
+IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
+WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&units=imperial&appid={}"
+
+WEATHER_SCRIPT = "Now for today's weather. The high today is {} degrees, and the low is {}. I would best describe" \
+                 " the forecast as {}. Currently, it is {} degrees, and it feels like {}. The humidity is {}" \
+                 " percent, and I would say the current conditions are {}."
+
 
 @unique
 class ConstantStrings(Enum):

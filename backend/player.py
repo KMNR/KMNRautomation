@@ -38,5 +38,6 @@ def play(filePath):
         print("File played successfully")
         return(1)
 
+
 if __name__ == "__main__":
     play("media/legalstationid/PewPewRadioSweeperID2.mp3")
