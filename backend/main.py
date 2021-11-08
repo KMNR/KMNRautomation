@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 from time import localtime, strftime, time, sleep
 import configparser
 import random
@@ -30,14 +31,17 @@ def main():
     run_automation = True
 
     # Read configuration file
-    '''
     cfg = configparser.ConfigParser()
     cfg.read("settings.ini")
     edu_time_delay = int(cfg["General"]["edu_time_delay"])
     debug = True if cfg["General"]["debug_logging"] == "true" else False
     print(debug)
-    '''
-    edu_time_delay = 1200
+
+    # Terminate any orphaned mpv instances
+    # This would apply if we are recovering from an unexpected failure of the python script
+    # In this case, the old mpv instance would still be running while the script is reloading
+    # Causing double-play, which is pretty gross
+    os.system("pkill -f mpv") 
     # Core loop begins here
     while run_automation:
         # Check current time

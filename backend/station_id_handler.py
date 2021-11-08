@@ -5,7 +5,7 @@ import player
 import constants
 random.seed(datetime.now())
 
-test=True
+test=False
 
 # Prerequisites: Passing min as an integer to denote what minute of the hour it currentlyis
 # Description: Chooses a random station ID to play and calls the media player to play it.
