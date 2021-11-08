@@ -1,11 +1,20 @@
-<!DOCSTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<Title> {{page_name}}</title>
-</head>
-<body>
-<h1> This is the {{page_name}} page</h1>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+	<h1> This is the {{page_name}} page</h1>
+	
 
+
+	<div >
+    <ul class="nav justify-content-center nav-fill" style="position: sticky; bottom:5px">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/playlists">Playlists</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/programming">Programming</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logging">View Logs</a>
+        </li>
+      </ul>
+	</div>
+{% endblock %}
