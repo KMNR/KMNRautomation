@@ -20,9 +20,22 @@
 </head>
 
 <body>
-
-        <Title> {{page_name}}</title>
-        {% block content %}{% endblock %}
+    <Title> {{page_name}}</title>
+    {% block content %}{% endblock %}
+    <div
+        class="background-image"
+        style="
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        align-items: center;
+        background-image: url('../static/colorful_radio.jpg');
+        opacity: 1;
+        "
+    ></div>
 
 </body>
 </html>

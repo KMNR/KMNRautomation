@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-    <a class="nav-link" href="/">KMNR Automation</a>
-    <h1> This is the {{page_name}} page</h1>
 
+	<h1 class="fixed-top" style="text-align: center;"> This is the {{page_name}} page</h1>
+    <a class="nav-link fixed-top" href="/">KMNR Automation</a>
 
-	  <div class="dropdown">
-		<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-		  Dropdown button
+	  <div class="dropdown position-fixed" style="position: relative; left: 640px; bottom: 400px;">
+		<button class="btn btn-secondary dropdown-toggle" style="background-color: D18564;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+		  Select One
 		</button>
 		<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 		  <li><a class="dropdown-item" href="/song_logs">Song Logs</a></li>

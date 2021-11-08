@@ -1,20 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h1> This is the {{page_name}} page</h1>
+	<h1 class="fixed-top" style="text-align: center;"> This is the {{page_name}} page</h1>
 	
 
-
-	<div >
-    <ul class="nav justify-content-center nav-fill" style="position: sticky; bottom:5px">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/playlists">Playlists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/programming">Programming</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logging">View Logs</a>
-        </li>
-      </ul>
+	<div class="fixed-bottom">
+	  <h1>
+		<ul class="nav justify-content-center nav-fill">
+			<li class="nav-item">
+			<a class="nav-link"  style="color: black;" href="/playlists">Playlists</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" style="color: black;" href="/programming">Programming</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" style="color: black;" href="/logging">View Logs</a>
+			</li>
+		</ul>
+	  </h1>
 	</div>
 {% endblock %}
