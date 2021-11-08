@@ -9,13 +9,13 @@ test=False
 
 # Prerequisites: Passing min as an integer to denote what minute of the hour it currentlyis
 # Description: Chooses a random station ID to play and calls the media player to play it.
-# Will always choose a legal station ID if within +/-5 minutes of the top of an hour
+# Will always choose a legal station ID if within +/-10 minutes of the top of an hour
 # Calls logging function to log each legal, top of the hour station ID
 def station_id_handler(min):
     if test:
         constants.MEDIA_ROOT_DIRECTORY="media"
     #if close to the top of the hour, play a legal id
-    if min<5 or min>55:
+    if min<10:
         if(player.play(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY)))):
             #log station ID here
             pass

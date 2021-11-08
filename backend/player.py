@@ -21,7 +21,7 @@ def play(filePath):
             f.write("Playing"+filePath+"\n")
         opSystem = platform.system()
         if opSystem=="Windows":
-            played=(os.system("start "+filePath))
+            played=(os.system("start "+"\"\" \""+filePath+"\""))
         elif opSystem=="Linux":
             played=(os.system("/usr/bin/mpv --no-terminal --no-video \""+filePath+"\""))
 
@@ -41,4 +41,5 @@ def play(filePath):
 
 
 if __name__ == "__main__":
-    play("media/legalstationid/PewPewRadioSweeperID2.mp3")
+    #play("media/legalstationid/PewPewRadioSweeperID2.mp3")
+    play("media/playlists/GogoJuic3/Always On Fire.mp3")
