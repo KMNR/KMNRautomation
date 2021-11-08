@@ -4,7 +4,7 @@ import player
 import os
 import player
 
-test = True
+test = False
 
 
 # Prerequisites: Passing hour, minute as integers. am_pm is either AM or PM as string (case insensitive)
