@@ -1,21 +1,20 @@
 from enum import Enum, unique
 
-MEDIA_ROOT_DIRECTORY = "/this/is/the/media/directory/"
-BACKEND_ROOT_DIRECTORY = "backend/"
+MEDIA_ROOT_DIRECTORY = "/home/ryan/Documents/automation-rework/media"
+BACKEND_ROOT_DIRECTORY = "/home/ryan/Documents/automation-rework/backend/"
 TIME_SUBDIRECTORY = "/time"
 PLAYLISTS_SUBDIRECTORY = "/playlists"
-TIMEIS_SUBDIRECTORY = "/timeis/"
+TIMEIS_SUBDIRECTORY = "/timeis"
 HOUR_SUBDIRECTORY = "/hours/"
 MINUTE_SUBDIRECTORY = "/minutes/"
 AM_PM_SUBDIRECTORY = "/ampm/"
 LEGAL_STATION_ID_SUBDIRECTORY = "/legalstationid/"
 NONLEGAL_STATION_ID_SUBDIRECTORY = "/nonlegalstationid/"
 PROGRAMMING_SUBDIRECTORY = "/programming/"
+WEATHER_SUBDIRECTORY = "/weather/"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 MP3_SEGS = ("PSA","ad-council","profile-america","ascertainment","earth-date","science-and-the-sea")
 TTS_SEGS = ("town-and-campus","news-and-weather","concert-news")
-WEATHER_SUBDIRECTORY = "/weather/"
-IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&units=imperial&appid={}"
 
 WEATHER_SCRIPT = "Now for today's weather. The high today is {} degrees, and the low is {}. I would best describe" \
