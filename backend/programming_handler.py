@@ -4,7 +4,6 @@ from mutagen.mp3 import MP3
 import player
 import constants
 import csv
-random.seed(datetime.now())
 
 test=True
 
@@ -13,6 +12,7 @@ test=True
 # reads from the daily_programming_schedule.txt file what programming should be played with this call, if any
 # Return: 1 if a programming segment was played, 0 if it was not
 def programming_handler(segs_played, hour, am_pm):
+    random.seed(datetime.now())
     seg_to_play=""
     #sets number of segments to play to 1 if between 10pm and 6am, and 2 otherwise
     hourly_segs_count=(((hour<6 or hour==12) and am_pm=="am") or (hour>=10 and hour<12 and am_pm=="pm"))

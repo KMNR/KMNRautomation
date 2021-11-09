@@ -10,9 +10,8 @@ import time_handler
 import programming_handler
 import constants
 
-random.seed()
-
 def main():
+    random.seed()
     # On initial start, assume we haven't played anything
     played_top_hour = False
     played_20_mins = False

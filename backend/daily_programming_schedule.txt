@@ -20,5 +20,5 @@
 7,pm,concert-news,PSA
 8,pm,news-and-weather,science-and-the-sea
 9,pm,ad-council,ascertainment
-10,pm,psa
+10,pm,PSA
 11,pm,earth-date
