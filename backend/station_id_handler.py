@@ -3,7 +3,6 @@ from datetime import datetime
 from mutagen.mp3 import MP3
 import player
 import constants
-random.seed(datetime.now())
 
 test=False
 
@@ -12,6 +11,7 @@ test=False
 # Will always choose a legal station ID if within +/-10 minutes of the top of an hour
 # Calls logging function to log each legal, top of the hour station ID
 def station_id_handler(min):
+    random.seed(datetime.now())
     if test:
         constants.MEDIA_ROOT_DIRECTORY="media"
     #if close to the top of the hour, play a legal id
