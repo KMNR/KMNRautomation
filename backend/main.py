@@ -3,7 +3,8 @@ from time import localtime, strftime, time, sleep
 import configparser
 import random
 import os
-
+import weather_fetcher
+import news_fetcher
 import playlist_handler
 import station_id_handler
 import time_handler
@@ -29,9 +30,13 @@ def main():
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
 
+    #create at least one weather forecast and one news article
+    news_fetcher.news_fetcher()
+    weather_fetcher.main()
+
     # Read configuration file
     cfg = configparser.ConfigParser()
-    cfg.read("settings.ini")
+    cfg.read("backend/settings.ini")
     edu_time_delay = int(cfg["General"]["edu_time_delay"])
     debug = True if cfg["General"]["debug_logging"] == "true" else False
     print(debug)
@@ -40,7 +45,7 @@ def main():
     # This would apply if we are recovering from an unexpected failure of the python script
     # In this case, the old mpv instance would still be running while the script is reloading
     # Causing double-play, which is pretty gross
-    os.system("pkill -f mpv") 
+    os.system("pkill -f mpv")
     # Core loop begins here
     while run_automation:
         # Check current time
@@ -79,8 +84,6 @@ def main():
             station_id_handler.station_id_handler(minutes)
             time_handler.time_handler(hours, minutes, am_pm)
 
-        #this needs to be changed. we should be pulling which educational segment to play
-        #   from KELP or a config, not choosing one to play randomly
         # Check for educational segment
         # If we haven't played an educational segment in edu_time_delay seconds
         if (current_epoch_time - edu_time_delay) > last_edu_segment_time:

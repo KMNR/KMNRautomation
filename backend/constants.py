@@ -9,6 +9,7 @@ HOUR_SUBDIRECTORY = "/hours/"
 MINUTE_SUBDIRECTORY = "/minutes/"
 AM_PM_SUBDIRECTORY = "/ampm/"
 WEATHER_SUBDIRECTORY = "/weather/"
+NEWS_SUBDIRECTORY = "/news/"
 LEGAL_STATION_ID_SUBDIRECTORY = "/legalstationid/"
 NONLEGAL_STATION_ID_SUBDIRECTORY = "/nonlegalstationid/"
 PROGRAMMING_SUBDIRECTORY = "/programming/"
@@ -16,16 +17,20 @@ MP3_SEGS = ("PSA","ad-council","profile-america","ascertainment","earth-date","s
 TTS_SEGS = ("town-and-campus","news-and-weather","concert-news")
 ADDITIONAL_SUBDIRECTORY_SEGS = ("ad-council")
 PROFILE_AMERICA_SUBDIRECTORY = "profile-america"
+NEWS_AND_WEATHER_ID = "news-and-weather"
 PROGRAMMING_SCHEDULE_PATH = "daily_programming_schedule.txt"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
-MP3_SEGS = ("PSA","ad-council","profile-america","ascertainment","earth-date","science-and-the-sea")
-TTS_SEGS = ("town-and-campus","news-and-weather","concert-news")
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&units=imperial&appid={}"
 
 WEATHER_SCRIPT = "Now for today's weather. The high today is {} degrees, and the low is {}. I would best describe" \
                  " the forecast as {}. Currently, it is {} degrees, and it feels like {}. The humidity is {}" \
                  " percent, and I would say the current conditions are {}."
 
+NEWS_SCRIPT = "Here's one of the top stories for today: {}." \
+              "The full story can be read at {}."
+
+BLOCKED_NEWS_KEYWORDS = ("sex","suicide")
+BLOCKED_NEWS_SOURCES = ("YouTube", "The Verge")
 
 @unique
 class ConstantStrings(Enum):

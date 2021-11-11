@@ -2,6 +2,10 @@ import random, os
 from datetime import datetime
 from mutagen.mp3 import MP3
 import player
+import weather_handler
+import news_handler
+import weather_fetcher
+import news_fetcher
 import constants
 import csv
 
@@ -58,12 +62,16 @@ def programming_handler(segs_played, hour, am_pm):
         #otherwise, call the appropriate handler for that programming:
         #   town and campus news, news and weather, or concert news
         elif seg_to_play.strip() in constants.TTS_SEGS:
-            print("play TTS programming here")
-            #placeholder since we can't play tts programming yet
-            return(1)
+            if seg_to_play.strip() == constants.NEWS_AND_WEATHER_ID:
+                news_successs = news_handler.news_handler()
+                news_fetcher.news_fetcher()
+                weather_success = weather_handler.weather_handler()
+                weather_fetcher.main()
+                return(news_successs and not weather_success)
+
         else:
             print("couldn't recognize the file as a valid edu segment!")
             return(0)
 
 if __name__ == '__main__':
-    programming_handler(1, 5, "pm")
+    programming_handler(0, 4, "pm")
