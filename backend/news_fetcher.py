@@ -29,7 +29,7 @@ def news_fetcher():
             articleNum=articleNum+1
 
     #clean up the text of the article
-    article_text = top_headlines['articles'][articleNum]['title']+top_headlines['articles'][articleNum]['content']
+    article_text = top_headlines['articles'][articleNum]['title']+"."+top_headlines['articles'][articleNum]['content']
     split_string = article_text.split("[",1)
     article_text = split_string[0]
     article_source = top_headlines['articles'][articleNum]['source']['name']
