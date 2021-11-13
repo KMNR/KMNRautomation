@@ -18,6 +18,8 @@ TTS_SEGS = ("town-and-campus","news-and-weather","concert-news")
 ADDITIONAL_SUBDIRECTORY_SEGS = ("ad-council")
 PROFILE_AMERICA_SUBDIRECTORY = "profile-america"
 NEWS_AND_WEATHER_ID = "news-and-weather"
+TOWN_AND_CAMPUS_ID = "town-and-campus"
+CONCERT_NEWS_ID = "concert-news"
 PROGRAMMING_SCHEDULE_PATH = "daily_programming_schedule.txt"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&units=imperial&appid={}"
