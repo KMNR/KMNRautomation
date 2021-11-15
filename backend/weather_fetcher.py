@@ -9,9 +9,9 @@ test = True
 
 def main():
     if test:
-        MEDIA_ROOT_DIRECTORY = "../media"
+        MEDIA_ROOT_DIRECTORY = "media"
     cfg = configparser.ConfigParser()
-    cfg.read("settings.ini")
+    cfg.read("backend/settings.ini")
     api_key = cfg["Weather"]["owm_api_key"]
     lat = cfg["Weather"]["lat"]
     long = cfg["Weather"]["long"]
