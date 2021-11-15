@@ -8,6 +8,7 @@ import weather_fetcher
 import news_fetcher
 import constants
 import csv
+from gtts import gTTS
 
 test=True
 
@@ -52,7 +53,7 @@ def programming_handler(segs_played, hour, am_pm):
         if seg_to_play.strip() in constants.MP3_SEGS:
             #profile america is special because there are specific ones for each date
             if seg_to_play.strip()==constants.PROFILE_AMERICA_SUBDIRECTORY:
-                #make the filename by the date
+                #make the filename from the date
                 profile_america_filename = date.strftime("%Y%m%d")
                 profile_america_filename = "pa"+profile_america_filename[2:]+".mp3"
                 return(player.play(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.PROFILE_AMERICA_SUBDIRECTORY+"/"+profile_america_filename))
@@ -71,14 +72,21 @@ def programming_handler(segs_played, hour, am_pm):
                 weather_success = weather_handler.weather_handler()
                 weather_fetcher.main()
                 return(news_successs and not weather_success)
-            elif seg_to_play.strip() == constants.TOWN_AND_CAMPUS_ID:
+            elif seg_to_play.strip() == constants.TOWN_AND_CAMPUS_SUBDIRECTORY:
                 pass
-            elif seg_to_play.strip() == constants.CONCERT_NEWS_ID:
-                pass
+            elif seg_to_play.strip() == constants.CONCERT_NEWS_SUBDIRECTORY:
+                f = open(constants.BACKEND_ROOT_DIRECTORY+"concert-news.txt")
+                concert_news_text = f.read()
+                tts = gTTS(concert_news_text, lang='en')
+                tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
+                return(player.play(constants.MEDIA_ROOT_DIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3"))
+            else:
+                print("couldn't recognize the path as a valid edu segment!")
+                return(0)
 
         else:
-            print("couldn't recognize the file as a valid edu segment!")
+            print("couldn't recognize the path as a valid edu segment!")
             return(0)
 
 if __name__ == '__main__':
-    programming_handler(0, 4, "pm")
+    programming_handler(0, 9, "am")
