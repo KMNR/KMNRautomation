@@ -34,6 +34,11 @@ NEWS_SCRIPT = "Here's one of the top stories for today: {}." \
 BLOCKED_NEWS_KEYWORDS = ("sex","suicide")
 BLOCKED_NEWS_SOURCES = ("YouTube", "The Verge")
 
+TOWN_AND_CAMPUS_URL = "https://kmnr.org/townandcampus"
+TOWN_AND_CAMPUS_PRELUDE = "Town & Campus News:"
+TOWN_AND_CAMPUS_BUFFER = ". The next event is: "
+TOWN_AND_CAMPUS_ENDING = ". Town & Campus News is read five times daily on the air, and is also available on our webpage (https://kmnr.org). Organizations may submit announcements to be read by filling out our online forms."
+
 @unique
 class ConstantStrings(Enum):
     PLAYING_TOP_HOUR = "Playing top of the hour ID"
