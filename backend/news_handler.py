@@ -19,6 +19,7 @@ def news_handler():
             print(e)
         return(exit_status)
     else:
+        print("no news articles found to play!")
         return(0)
 
 if __name__ == "__main__":

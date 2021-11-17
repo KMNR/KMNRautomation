@@ -5,6 +5,7 @@ import random
 import os
 import weather_fetcher
 import news_fetcher
+import town_and_campus_fetcher
 import playlist_handler
 import station_id_handler
 import time_handler
@@ -30,9 +31,10 @@ def main():
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
 
-    #create at least one weather forecast and one news article
+    #create at least one weather forecast, news article, and town and campus news reading on startup
     news_fetcher.news_fetcher()
     weather_fetcher.main()
+    town_and_campus_fetcher.town_and_campus_fetcher()
 
     # Read configuration file
     cfg = configparser.ConfigParser()

@@ -31,11 +31,11 @@ WEATHER_SCRIPT = "Now for today's weather. The high today is {} degrees, and the
 NEWS_SCRIPT = "Here's one of the top stories for today: {}." \
               "The full story can be read at {}."
 
-BLOCKED_NEWS_KEYWORDS = ("sex","suicide")
-BLOCKED_NEWS_SOURCES = ("YouTube", "The Verge")
+BLOCKED_NEWS_KEYWORDS = ("sex","suicide","assault")
+BLOCKED_NEWS_SOURCES = ("YouTube","The Verge","Breitbart News","CNN Spanish","Crypto Coins News","Reddit /r/all")
 
 TOWN_AND_CAMPUS_URL = "https://kmnr.org/townandcampus"
-TOWN_AND_CAMPUS_PRELUDE = "Town & Campus News:"
+TOWN_AND_CAMPUS_PRELUDE = "Town & Campus News: "
 TOWN_AND_CAMPUS_BUFFER = ". The next event is: "
 TOWN_AND_CAMPUS_ENDING = ". Town & Campus News is read five times daily on the air, and is also available on our webpage (https://kmnr.org). Organizations may submit announcements to be read by filling out our online forms."
 

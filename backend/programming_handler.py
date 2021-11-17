@@ -4,8 +4,10 @@ from mutagen.mp3 import MP3
 import player
 import weather_handler
 import news_handler
+import town_and_campus_handler
 import weather_fetcher
 import news_fetcher
+import town_and_campus_fetcher
 import constants
 import csv
 from gtts import gTTS
@@ -73,7 +75,9 @@ def programming_handler(segs_played, hour, am_pm):
                 weather_fetcher.main()
                 return(news_successs and not weather_success)
             elif seg_to_play.strip() == constants.TOWN_AND_CAMPUS_SUBDIRECTORY:
-                pass
+                town_and_campus_success = town_and_campus_handler.town_and_campus_handler()
+                town_and_campus_fetcher.town_and_campus_fetcher()
+                return(town_and_campus_success)
             elif seg_to_play.strip() == constants.CONCERT_NEWS_SUBDIRECTORY:
                 f = open(constants.BACKEND_ROOT_DIRECTORY+"concert-news.txt")
                 concert_news_text = f.read()
@@ -89,4 +93,4 @@ def programming_handler(segs_played, hour, am_pm):
             return(0)
 
 if __name__ == '__main__':
-    programming_handler(0, 9, "am")
+    programming_handler(0, 6, "am")
