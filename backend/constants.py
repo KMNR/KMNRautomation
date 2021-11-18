@@ -8,6 +8,7 @@ TIMEIS_SUBDIRECTORY = "/timeis"
 HOUR_SUBDIRECTORY = "/hours/"
 MINUTE_SUBDIRECTORY = "/minutes/"
 AM_PM_SUBDIRECTORY = "/ampm/"
+AT_NIGHT_SUBDIRECTORY = "/at_night/"
 WEATHER_SUBDIRECTORY = "/weather/"
 NEWS_SUBDIRECTORY = "/news/"
 LEGAL_STATION_ID_SUBDIRECTORY = "/legalstationid/"
@@ -37,7 +38,7 @@ BLOCKED_NEWS_SOURCES = ("YouTube","The Verge","Breitbart News","CNN Spanish","Cr
 TOWN_AND_CAMPUS_URL = "https://kmnr.org/townandcampus"
 TOWN_AND_CAMPUS_PRELUDE = "Town & Campus News: "
 TOWN_AND_CAMPUS_BUFFER = ". The next event is: "
-TOWN_AND_CAMPUS_ENDING = ". Town & Campus News is read five times daily on the air, and is also available on our webpage (https://kmnr.org). Organizations may submit announcements to be read by filling out our online forms."
+TOWN_AND_CAMPUS_ENDING = ". Town & Campus News is read five times daily on the air, and is also available on our webpage (kmnr.org). Organizations may submit announcements to be read by filling out our online forms."
 
 @unique
 class ConstantStrings(Enum):
