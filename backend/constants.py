@@ -40,6 +40,8 @@ TOWN_AND_CAMPUS_PRELUDE = "Town & Campus News: "
 TOWN_AND_CAMPUS_BUFFER = ". The next event is: "
 TOWN_AND_CAMPUS_ENDING = ". Town & Campus News is read five times daily on the air, and is also available on our webpage (kmnr.org). Organizations may submit announcements to be read by filling out our online forms."
 
+DJ_KEY = "c6a4a5ae"
+
 @unique
 class ConstantStrings(Enum):
     PLAYING_TOP_HOUR = "Playing top of the hour ID"
