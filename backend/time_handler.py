@@ -19,6 +19,8 @@ def time_handler(hour, minute, am_pm):
     hr_media_folder = constants.MEDIA_ROOT_DIRECTORY + constants.TIME_SUBDIRECTORY + constants.HOUR_SUBDIRECTORY + str(hour)
     min_media_folder = constants.MEDIA_ROOT_DIRECTORY + constants.TIME_SUBDIRECTORY + constants.MINUTE_SUBDIRECTORY + str(minute)
     am_pm_media_folder = constants.MEDIA_ROOT_DIRECTORY + constants.TIME_SUBDIRECTORY + constants.AM_PM_SUBDIRECTORY + str(am_pm).lower()
+    if (str(am_pm).lower()=="pm" and hour>=6 and random.random()>=0.5):
+        am_pm_media_folder=am_pm_media_folder+constants.AT_NIGHT_SUBDIRECTORY
     if test:
         print(timeis_media_folder)
         print(hr_media_folder)
