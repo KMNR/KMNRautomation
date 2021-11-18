@@ -1,7 +1,7 @@
 from enum import Enum, unique
 
-MEDIA_ROOT_DIRECTORY = "/home/ryan/Documents/automation-rework/media"
-BACKEND_ROOT_DIRECTORY = "/home/ryan/Documents/automation-rework/backend/"
+MEDIA_ROOT_DIRECTORY = "media"
+BACKEND_ROOT_DIRECTORY = "backend/"
 TIME_SUBDIRECTORY = "/time"
 PLAYLISTS_SUBDIRECTORY = "/playlists"
 TIMEIS_SUBDIRECTORY = "/timeis"
