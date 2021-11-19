@@ -5,7 +5,6 @@ import time
 
 def music_logging_handler(playlist_path):
     browser = webdriver.Firefox()
-    type(browser)
     browser.get('http://klap.kmnr.org/logger/new')
     with open(playlist_path+"/playlist.txt") as f:
         log = f.read()
