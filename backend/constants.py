@@ -41,6 +41,8 @@ TOWN_AND_CAMPUS_BUFFER = ". The next event is: "
 TOWN_AND_CAMPUS_ENDING = ". Town & Campus News is read five times daily on the air, and is also available on our webpage (kmnr.org). Organizations may submit announcements to be read by filling out our online forms."
 
 DJ_KEY = "c6a4a5ae"
+KELP_ID = "djbs"
+KELP_PW = "snap1man"
 
 @unique
 class ConstantStrings(Enum):

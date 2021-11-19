@@ -10,6 +10,7 @@ import playlist_handler
 import station_id_handler
 import time_handler
 import programming_handler
+import music_logging_handler
 import constants
 
 def main():
@@ -108,6 +109,8 @@ def main():
             #update the list of recently played playlists
             recent_playlists.pop()
             recent_playlists.insert(0,current_playlist_path)
+            #log the playlist
+            music_logging_handler.music_logging_handler(current_playlist_path)
             #start next playlist from song at index 0
             current_song_index=0
             #print(recent_playlists)
