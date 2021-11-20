@@ -1,12 +1,12 @@
 import os
-from constants import MEDIA_ROOT_DIRECTORY, NEWS_SUBDIRECTORY
+from constants import MEDIA_ROOT_DIRECTORY, NEWS_SUBDIRECTORY, PROGRAMMING_SUBDIRECTORY
 import player
 
 # Prerequisites: None
 # Definition: Finds the most recent news article in the news directory and plays it using the media player
 # Returns: 1 if reading the story was successful, 2 if it was not
 def news_handler():
-    news_directory = MEDIA_ROOT_DIRECTORY + NEWS_SUBDIRECTORY
+    news_directory = MEDIA_ROOT_DIRECTORY + PROGRAMMING_SUBDIRECTORY+ NEWS_SUBDIRECTORY
     articles_in_directory = sorted(os.listdir(news_directory), reverse=True)
     if len(articles_in_directory) > 0:
         article_to_play = articles_in_directory[0]

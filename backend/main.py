@@ -10,6 +10,7 @@ import playlist_handler
 import station_id_handler
 import time_handler
 import programming_handler
+import programming_logging_handler
 import music_logging_handler
 import constants
 
@@ -28,6 +29,9 @@ def main():
     # set time of last educational segment play to epoch
     last_edu_segment_time = 1
     edu_segs_this_hour = 0
+
+    #assume we want to log music and programming
+    logging=True
 
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
@@ -66,7 +70,7 @@ def main():
             played_20_mins = False
             played_40_mins = False
             edu_segs_this_hour = 0
-            station_id_handler.station_id_handler(minutes)
+            station_id_handler.station_id_handler(minutes,logging)
             time_handler.time_handler(hours, minutes, am_pm)
 
         # 20 minutes past ID
@@ -75,7 +79,7 @@ def main():
             played_20_mins = True
             played_top_hour = False
             played_40_mins = False
-            station_id_handler.station_id_handler(minutes)
+            station_id_handler.station_id_handler(minutes,logging)
             time_handler.time_handler(hours, minutes, am_pm)
 
         # 40 minutes past ID
@@ -84,7 +88,7 @@ def main():
             played_40_mins = True
             played_top_hour = False
             played_20_mins = False
-            station_id_handler.station_id_handler(minutes)
+            station_id_handler.station_id_handler(minutes,logging)
             time_handler.time_handler(hours, minutes, am_pm)
 
         # Check for educational segment
@@ -94,7 +98,7 @@ def main():
 
             last_edu_segment_time = current_epoch_time
             # Play educational segment here
-            if(programming_handler.programming_handler(edu_segs_this_hour, hours, am_pm)):
+            if(programming_handler.programming_handler(edu_segs_this_hour, hours, am_pm,logging)):
                 edu_segs_this_hour+=1
 
         # Choose the next playlist
@@ -110,7 +114,8 @@ def main():
             recent_playlists.pop()
             recent_playlists.insert(0,current_playlist_path)
             #log the playlist
-            music_logging_handler.music_logging_handler(current_playlist_path)
+            if logging:
+                music_logging_handler.music_logging_handler(current_playlist_path)
             #start next playlist from song at index 0
             current_song_index=0
             #print(recent_playlists)

@@ -1,5 +1,5 @@
 import requests
-from constants import TOWN_AND_CAMPUS_URL, TOWN_AND_CAMPUS_PRELUDE, TOWN_AND_CAMPUS_BUFFER, TOWN_AND_CAMPUS_ENDING, TOWN_AND_CAMPUS_SUBDIRECTORY, MEDIA_ROOT_DIRECTORY
+from constants import TOWN_AND_CAMPUS_URL, TOWN_AND_CAMPUS_PRELUDE, TOWN_AND_CAMPUS_BUFFER, TOWN_AND_CAMPUS_ENDING, TOWN_AND_CAMPUS_SUBDIRECTORY, MEDIA_ROOT_DIRECTORY, PROGRAMMING_SUBDIRECTORY
 from bs4 import BeautifulSoup
 from gtts import gTTS
 import time
@@ -20,7 +20,7 @@ def town_and_campus_fetcher():
 
         filename = "/town-and-campus-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
         tts = gTTS(town_and_campus_text, lang='en')
-        tts.save(MEDIA_ROOT_DIRECTORY+"/"+TOWN_AND_CAMPUS_SUBDIRECTORY+filename)
+        tts.save(MEDIA_ROOT_DIRECTORY+PROGRAMMING_SUBDIRECTORY+"/"+TOWN_AND_CAMPUS_SUBDIRECTORY+filename)
         return(1)
     else:
         print("error: every town and campus news item should have a body and a title!")

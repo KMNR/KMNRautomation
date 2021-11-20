@@ -1,6 +1,6 @@
 from enum import Enum, unique
 
-MEDIA_ROOT_DIRECTORY = "media"
+MEDIA_ROOT_DIRECTORY = "media/"
 BACKEND_ROOT_DIRECTORY = "backend/"
 TIME_SUBDIRECTORY = "/time"
 PLAYLISTS_SUBDIRECTORY = "/playlists"
@@ -32,7 +32,7 @@ WEATHER_SCRIPT = "Now for today's weather. The high today is {} degrees, and the
 NEWS_SCRIPT = "Here's one of the top stories for today: {}." \
               "The full story can be read at {}."
 
-BLOCKED_NEWS_KEYWORDS = ("sex","suicide","assault")
+BLOCKED_NEWS_KEYWORDS = ("sex","suicide","assault","gun","body")
 BLOCKED_NEWS_SOURCES = ("YouTube","The Verge","Breitbart News","CNN Spanish","Crypto Coins News","Reddit /r/all")
 
 TOWN_AND_CAMPUS_URL = "https://kmnr.org/townandcampus"

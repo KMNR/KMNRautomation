@@ -1,12 +1,12 @@
 import os
-from constants import MEDIA_ROOT_DIRECTORY, TOWN_AND_CAMPUS_SUBDIRECTORY
+from constants import MEDIA_ROOT_DIRECTORY, TOWN_AND_CAMPUS_SUBDIRECTORY, PROGRAMMING_SUBDIRECTORY
 from player import play
 
 # Prerequisites: None
 # Definition: Finds the most recent town and campus news reading in the town and campus
 # Returns:
 def town_and_campus_handler():
-    town_and_campus_directory = MEDIA_ROOT_DIRECTORY + "/" + TOWN_AND_CAMPUS_SUBDIRECTORY
+    town_and_campus_directory = MEDIA_ROOT_DIRECTORY + PROGRAMMING_SUBDIRECTORY + "/" + TOWN_AND_CAMPUS_SUBDIRECTORY
     articles_in_directory = sorted(os.listdir(town_and_campus_directory), reverse=True)
     if len(articles_in_directory) > 0:
         article_to_play = articles_in_directory[0]
@@ -15,8 +15,8 @@ def town_and_campus_handler():
         try:
             for f in os.listdir(town_and_campus_directory):
                 os.remove(town_and_campus_directory+"/"+f)
-        except e:
-            print(e)
+        except:
+            print("Error removing old town and campus news mp3 files")
         return(exit_status)
     else:
         print("no town and campus news found to play!")
