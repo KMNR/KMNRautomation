@@ -32,7 +32,7 @@ WEATHER_SCRIPT = "Now for today's weather. The high today is {} degrees, and the
 NEWS_SCRIPT = "Here's one of the top stories for today: {}." \
               "The full story can be read at {}."
 
-BLOCKED_NEWS_KEYWORDS = ("sex","suicide","assault","gun","body")
+BLOCKED_NEWS_KEYWORDS = ("sex","suicide","assault","gun","body","weapon")
 BLOCKED_NEWS_SOURCES = ("YouTube","The Verge","Breitbart News","CNN Spanish","Crypto Coins News","Reddit /r/all")
 
 TOWN_AND_CAMPUS_URL = "https://kmnr.org/townandcampus"

@@ -4,17 +4,26 @@ from bs4 import BeautifulSoup
 from gtts import gTTS
 import time
 
+# Prerequisites: None
+# Description: Pulls town and campus news from kmnr.org and saves an mp3 tts reading
+#   of the news
+# Returns: 1 if saving the file was a success, 0 if it was not
 def town_and_campus_fetcher():
     page=requests.get(TOWN_AND_CAMPUS_URL)
     town_and_campus_text = TOWN_AND_CAMPUS_PRELUDE
 
+    #search for each article's title and text
     soup = BeautifulSoup(page.content, "html.parser")
     title_results = soup.find_all("h2")
     body_results = soup.find_all("div", {"class": "span9"})
+
     if(len(title_results)==len(body_results)):
+        #add each title and article to the text to read
         for i in range(len(title_results)):
             if(i!=0):
+                #add separater before all entries but the first
                 town_and_campus_text=town_and_campus_text+TOWN_AND_CAMPUS_BUFFER
+            #format thearticle as it's added to the text
             town_and_campus_text=town_and_campus_text+(str(title_results[i])[4:-5])+". "+((str(body_results[i])[34:-23]).replace("<br/>",". "))
         town_and_campus_text=town_and_campus_text+TOWN_AND_CAMPUS_ENDING
 

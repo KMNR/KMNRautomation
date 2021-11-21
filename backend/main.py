@@ -31,7 +31,8 @@ def main():
     edu_segs_this_hour = 0
 
     #assume we want to log music and programming
-    logging=True
+    #we could probably get this from the config file
+    logging=False
 
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True

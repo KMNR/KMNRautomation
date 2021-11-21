@@ -4,7 +4,7 @@ from player import play
 
 # Prerequisites: None
 # Definition: Finds the most recent town and campus news reading in the town and campus
-# Returns:
+# Returns: 1 if the news was played successfully, 0 if it was not
 def town_and_campus_handler():
     town_and_campus_directory = MEDIA_ROOT_DIRECTORY + PROGRAMMING_SUBDIRECTORY + "/" + TOWN_AND_CAMPUS_SUBDIRECTORY
     articles_in_directory = sorted(os.listdir(town_and_campus_directory), reverse=True)

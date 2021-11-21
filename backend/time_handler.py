@@ -10,6 +10,7 @@ test = False
 # Prerequisites: Passing hour, minute as integers. am_pm is either AM or PM as string (case insensitive)
 # Description: Chooses a random file from the provided media root directory for hour, minute second
 # and passes the absolute file path as an argument to the media handler function.
+# Returns: None
 def time_handler(hour, minute, am_pm):
     random.seed()
     if test:
