@@ -1,17 +1,15 @@
+#! /usr/bin/env python
 import requests
 import configparser
-from constants import WEATHER_API_URL, WEATHER_SCRIPT, MEDIA_ROOT_DIRECTORY, WEATHER_SUBDIRECTORY
+from constants import WEATHER_API_URL, WEATHER_SCRIPT, MEDIA_ROOT_DIRECTORY, WEATHER_SUBDIRECTORY, CONFIG_FILE_PATH
 import time
 from gtts import gTTS
 
-test = True
 
 
 def main():
-    if test:
-        MEDIA_ROOT_DIRECTORY = "media"
     cfg = configparser.ConfigParser()
-    cfg.read("backend/settings.ini")
+    cfg.read(CONFIG_FILE_PATH)
     api_key = cfg["Weather"]["owm_api_key"]
     lat = cfg["Weather"]["lat"]
     long = cfg["Weather"]["long"]
