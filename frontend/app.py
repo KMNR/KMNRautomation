@@ -9,6 +9,10 @@ def landing_page():
 def admin():
     return render_template('landing_page.html', page_name="Automation Admin")
 
+@app.route("/settings")
+def settings():
+    return render_template('settings.html', page_name="Settings")
+
 
 @app.route("/playlists")
 def playlists():

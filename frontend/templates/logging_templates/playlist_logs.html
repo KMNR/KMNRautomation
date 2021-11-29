@@ -1,10 +1,31 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<a class="nav-link position-fixed"  style="left: 50px; top: 10px" href="/logging">Back to logging</a>
+<a class="btn btn-outline-dark position-fixed"role="button" style="left: 50px; top: 10px; border-width: 2px;" href="/logging">Back to Logging</a>
+	
+	
+	
 <div class="form-check form-switch position-fixed" style="right: 50px; top: 10px">
-	<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+	<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" data-bs-toggle="modal" data-bs-target="#exampleModal" checked>
 	<label for="flexSwitchCheckChecked">Logging On/Off</label>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+	<div class="modal-header">
+	  <h5 class="modal-title" id="exampleModalLabel">Hold ur horses</h5>
+	  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>
+	<div class="modal-body">
+	  Are you absolutely sure you want to turn on/off logging?? Like, for everything???
+	</div>
+	<div class="modal-footer">
+	  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes go away</button>
+	  <button type="button" class="btn btn-primary" onclick="">Ugh ur right my bad</button>
+	</div>
+  </div>
+</div>
 </div>
 
 	<div class="list-group position-fixed" style="top: 180px; left: 440px; width: 500px; background-color: D28465;">
