@@ -44,7 +44,7 @@ def main():
 
     # Read configuration file
     cfg = configparser.ConfigParser()
-    cfg.read("backend/settings.ini")
+    cfg.read(constants.CONFIG_FILE_PATH)
     edu_time_delay = int(cfg["General"]["edu_time_delay"])
     debug = True if cfg["General"]["debug_logging"] == "true" else False
     print(debug)
