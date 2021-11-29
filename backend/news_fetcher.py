@@ -11,7 +11,7 @@ def news_fetcher():
     foundArticle = False
     articleNum=0
     cfg = configparser.ConfigParser()
-    cfg.read("backend/settings.ini")
+    cfg.read(constants.CONFIG_FILE_PATH)
     api_key = cfg["News"]["news_api_key"]
 
     #call the api for the top English United States stories
