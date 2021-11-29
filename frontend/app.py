@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def landing_page():
-    return render_template('landing_page.html', page_name="Automation Home")
+    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine")
 
 @app.route("/admin")
 def admin():
@@ -13,6 +13,10 @@ def admin():
 @app.route("/playlists")
 def playlists():
     return render_template('playlists.html', page_name="Playlists")
+
+@app.route("/songs")
+def songs():
+    return render_template('songs.html', page_name="Songs")
 
 @app.route("/programming")
 def programming():
