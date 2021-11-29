@@ -1,11 +1,21 @@
-<!DOCSTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<Title> {{page_name}}</title>
-</head>
-<body>
-<h1> This is the {{page_name}} page</h1>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+	<h1 class="fixed-top" style="text-align: center;">{{page_name}}</h1>
 
+
+	<div class="fixed-bottom">
+	  <h1>
+		<ul class="nav justify-content-center nav-fill">
+			<li class="nav-item">
+				<a href="/playlists" class="btn btn-lg btn-outline-dark" tabindex="-1" role="button">Playlists</a>
+			</li>
+			<li class="nav-item">
+				<a href="/programming" class="btn btn-lg btn-outline-dark" tabindex="-1" role="button">Programming</a>
+			</li>
+			<li class="nav-item">
+				<a href="/logging" class="btn btn-lg btn-outline-dark" tabindex="-1" role="button">View Logs</a>
+			</li>
+		</ul>
+	  </h1>
+	</div>
+{% endblock %}
