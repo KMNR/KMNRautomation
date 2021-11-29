@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import os
 app = Flask(__name__)
 
 @app.route("/")
@@ -12,7 +13,16 @@ def admin():
 
 @app.route("/playlists")
 def playlists():
-    return render_template('playlists.html', page_name="Playlists")
+    playlists = sorted(os.listdir("/home/ryan/Documents/automation-rework/media/playlists"))    
+    return render_template('playlists.html', page_name="Playlists", playlists=playlists)
+
+@app.route("/playlists/<playlist>")
+def song_view(playlist):
+    songs = []
+    with open("/home/ryan/Documents/automation-rework/media/playlists/"+playlist+"/playlist.config", "r") as f:
+        songs = [line.rstrip() for line in f.readlines()]
+    return render_template('playlist_view.html', page_name=playlist, songs=songs)
+
 
 @app.route("/songs")
 def songs():
@@ -25,7 +35,6 @@ def programming():
 @app.route("/logging")
 def logging():
     return render_template('logging.html', page_name="View Logs")
-
 
 @app.route("/song_logs")
 def songlogs():
