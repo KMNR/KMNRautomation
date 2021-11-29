@@ -11,7 +11,6 @@ test=True
 # Prerequisites: Passing file path of a valid mp3 or other audio file as a string
 # Description: Uses the OS's native media player to play the audio file at the passed path
 # Return: 0 if the file failed to play, 1 if the file played without issue
-# Call function in other files using player.play(filePath)
 def play(filePath):
     played=1
     if test:
