@@ -9,7 +9,7 @@ import player
 # be skipped and nothing will be played.
 # Return: The index of the next song to be played, or -1 if the playlist is over
 def playlist_handler(folderPath, songNum):
-    songList=os.listdir(folderPath)
+    songList=sorted(os.listdir(folderPath))
     if songNum>=len(songList):
         return -1
     else:
