@@ -18,6 +18,10 @@ def main():
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
 
+    # Start with logging on
+    if os.getenv('LOGGING')==None:
+        os.environ['LOGGING']="True"
+
     # Read configuration file
     cfg = configparser.ConfigParser()
     cfg.read("settings.ini")

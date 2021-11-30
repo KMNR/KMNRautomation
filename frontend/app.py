@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import os
 app = Flask(__name__)
 
 @app.route("/")
@@ -42,6 +43,12 @@ def errorlogs():
 @app.route("/playlist_logs")
 def playlistlogs():
     return render_template('logging_templates/playlist_logs.html', page_name="Playlist Logs")
+
+def toggleLogging():
+    if os.getenv('LOGGING')=="False":
+        os.environ['LOGGING']="True"
+    else:
+        os.environ['LOGGING']="False"
 
 if __name__ == '__main__':
     app.run(debug=True)
