@@ -37,10 +37,15 @@ def main():
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
 
+    # Start with logging on
+    if os.getenv('LOGGING')==None:
+        os.environ['LOGGING']="True"
+
     #create at least one weather forecast, news article, and town and campus news reading on startup
     news_fetcher.news_fetcher()
     weather_fetcher.main()
     town_and_campus_fetcher.town_and_campus_fetcher()
+
 
     # Read configuration file
     cfg = configparser.ConfigParser()
