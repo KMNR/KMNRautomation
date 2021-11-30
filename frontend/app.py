@@ -50,5 +50,13 @@ def toggleLogging():
     else:
         os.environ['LOGGING']="False"
 
+def dontToggleLogging():
+    if os.getenv('LOGGING')=="False":
+        os.environ['LOGGING']="False"
+        id="flexSwitchCheckDefault"
+    else:
+        os.environ['LOGGING']="True"
+        id="flexSwitchCheckChecked"
+
 if __name__ == '__main__':
     app.run(debug=True)
