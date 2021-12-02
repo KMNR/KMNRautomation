@@ -19,6 +19,7 @@ Uptime Manager - Supervisord
 
 
 ## Contributions
+To make contributions to this project,
 
 ## Credit
 This project was created/updated by:
