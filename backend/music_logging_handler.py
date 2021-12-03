@@ -13,8 +13,9 @@ def music_logging_handler(playlist_path):
         browser.get('http://klap.kmnr.org/logger/new')
     except:
         print("couldn't open KLAP!")
+        browser.quit()
         return
-        
+
     with open(playlist_path+"/playlist.txt") as f:
         log = f.read()
 
