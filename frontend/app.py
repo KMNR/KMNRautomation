@@ -1,19 +1,20 @@
+#! /usr/bin/env python3
 from flask import Flask, render_template,redirect, request
+from random import choice
 import os
 app = Flask(__name__)
-
+root_dir = "/home/ryan/Documents/automation-rework/frontend"
 @app.route("/")
 def landing_page():
-    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine")
-
-@app.route("/admin")
-def admin():
-    return render_template('landing_page.html', page_name="Automation Admin")
+    funny_slider = ""
+    with open(root_dir+"/static/slider_values.txt", "r") as f:
+        options = f.readlines()
+        funny_slider = choice(options)
+    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine", slider=funny_slider)
 
 @app.route("/settings")
 def settings():
     return render_template('settings.html', page_name="Settings")
-
 
 @app.route("/playlists")
 def playlists():
@@ -30,7 +31,6 @@ def programming():
 @app.route("/logging")
 def logging():
     return render_template('logging.html', page_name="View Logs")
-
 
 @app.route("/song_logs")
 def songlogs():
