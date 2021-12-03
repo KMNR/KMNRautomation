@@ -46,10 +46,23 @@ def playlistlogs():
 
 @app.route("/toggle_logging")
 def toggle_logging():
-    if os.getenv('LOGGING')=="False":
-        os.system("export LOGGING=true")
-    else:
-        os.environ['LOGGING']="False"
+    try:
+        f=open("backend/logging.txt","r")
+    except:
+        f=open("backend/logging.txt","w")
+        f.write("False")
+        f.close()
+        f=open("backend/logging.txt","r")
+    status=f.read()
+    f.close()
+    #os.system(status)
+    f=open("backend/logging.txt","w")
+    if(status=="True"):
+        f.write("False")
+    elif(status=="False"):
+        f.write("True")
+    f.close()
+
     return redirect(request.referrer)
 
 if __name__ == '__main__':
