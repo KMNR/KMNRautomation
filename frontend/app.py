@@ -44,27 +44,13 @@ def errorlogs():
 def playlistlogs():
     return render_template('logging_templates/playlist_logs.html', page_name="Playlist Logs")
 
-@app.route("/toggle_logging", methods=["POST"])
+@app.route("/toggle_logging")
 def toggle_logging():
-    global logging_toggle
-    logging_toggle = bool(request.form["logging_toggle"])
-    print("toggled")
     if os.getenv('LOGGING')=="False":
-        os.environ['LOGGING']="True"
+        os.system("export LOGGING=true")
     else:
         os.environ['LOGGING']="False"
     return redirect(request.referrer)
-
-@app.route("/logging_layout")
-def dontToggleLogging():
-    print("not toggled")
-    if os.getenv('LOGGING')=="False":
-        os.environ['LOGGING']="False"
-        id="flexSwitchCheckDefault"
-    else:
-        os.environ['LOGGING']="True"
-        id="flexSwitchCheckChecked"
-    return
 
 if __name__ == '__main__':
     app.run(debug=True)
