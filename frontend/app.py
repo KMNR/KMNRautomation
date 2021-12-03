@@ -1,19 +1,20 @@
-from flask import Flask, render_template
+#! /usr/bin/env python3
+from flask import Flask, render_template,redirect, request
+from random import choice
 import os
 app = Flask(__name__)
-
+root_dir = "/home/ryan/Documents/automation-rework/frontend"
 @app.route("/")
 def landing_page():
-    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine")
-
-@app.route("/admin")
-def admin():
-    return render_template('landing_page.html', page_name="Automation Admin")
+    funny_slider = ""
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/frontend/static/slider_values.txt", "r") as f:
+        options = f.readlines()
+        funny_slider = choice(options)
+    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine", slider=funny_slider)
 
 @app.route("/settings")
 def settings():
     return render_template('settings.html', page_name="Settings")
-
 
 @app.route("/playlists")
 def playlists():
@@ -31,7 +32,6 @@ def programming():
 def logging():
     return render_template('logging.html', page_name="View Logs")
 
-
 @app.route("/song_logs")
 def songlogs():
     return render_template('logging_templates/song_logs.html', page_name="Song Logs")
@@ -44,11 +44,26 @@ def errorlogs():
 def playlistlogs():
     return render_template('logging_templates/playlist_logs.html', page_name="Playlist Logs")
 
-def toggleLogging():
-    if os.getenv('LOGGING')=="False":
-        os.environ['LOGGING']="True"
-    else:
-        os.environ['LOGGING']="False"
+@app.route("/toggle_logging")
+def toggle_logging():
+    try:
+        f=open("backend/logging.txt","r")
+    except:
+        f=open("backend/logging.txt","w")
+        f.write("False")
+        f.close()
+        f=open("backend/logging.txt","r")
+    status=f.read()
+    f.close()
+    #os.system(status)
+    f=open("backend/logging.txt","w")
+    if(status=="True"):
+        f.write("False")
+    elif(status=="False"):
+        f.write("True")
+    f.close()
+
+    return redirect(request.referrer)
 
 if __name__ == '__main__':
     app.run(debug=True)
