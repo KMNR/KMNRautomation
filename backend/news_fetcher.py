@@ -11,7 +11,7 @@ def news_fetcher():
     foundArticle = False
     articleNum=0
     cfg = configparser.ConfigParser()
-    cfg.read("backend/settings.ini")
+    cfg.read(constants.CONFIG_FILE_PATH)
     api_key = cfg["News"]["news_api_key"]
 
     #call the api for the top English United States stories
@@ -38,7 +38,7 @@ def news_fetcher():
     tts = gTTS(script, lang='en')
 
     filename = "news-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
-    tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.NEWS_SUBDIRECTORY+filename)
+    tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.NEWS_SUBDIRECTORY+filename)
 
     print("added news article titled: ",top_headlines['articles'][articleNum]['title'],
         " from source: ",top_headlines['articles'][articleNum]['source']['name'])
