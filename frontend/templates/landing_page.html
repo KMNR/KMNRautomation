@@ -1,14 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
+
 	<h1 class="position-fixed" style="left: 450">{{page_name}}</h1>
 
 	<a class="btn btn-outline-dark position-fixed"role="button" style="right: 50px; top: 10px; border-width: 2px;" href="https://git-classes.mst.edu/kmnr-rework/automation-rework">Go to Repository</a>
 	
 	<h7 for="customRange1" class="form-label position-fixed" style="right: 50px; top: 55px">{{slider}}</h7>
 	<input type="range" class="form-range position-fixed" style="width: 200; right: 50px; top: 75px" id="customRange1">
-
-
-
 	<form method="POST" action="logging">
 		<div class="form-check form-switch position-fixed" style="right: 50px; top: 105px">
     		<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-checked="true">
@@ -33,11 +31,6 @@
 	  </div>
 	</div>
   </div>
-
-</body>
-</html>
-
-
 	<div class="fixed-bottom">
 	  <h1>
 		<ul class="nav justify-content-center nav-fill">
