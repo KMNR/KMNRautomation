@@ -7,7 +7,7 @@ root_dir = "/home/ryan/Documents/automation-rework/frontend"
 @app.route("/")
 def landing_page():
     funny_slider = ""
-    with open(root_dir+"/static/slider_values.txt", "r") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/frontend/static/slider_values.txt", "r") as f:
         options = f.readlines()
         funny_slider = choice(options)
     return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine", slider=funny_slider)
