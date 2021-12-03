@@ -24,9 +24,13 @@ def playlists():
 @app.route("/playlists/<playlist>")
 def song_view(playlist):
     songs = []
-    with open("/home/ryan/Documents/automation-rework/media/playlists/"+playlist+"/playlist.config", "r") as f:
-        songs = [line.rstrip() for line in f.readlines()]
-    return render_template('playlist_view.html', page_name=playlist, songs=songs)
+    with open("/home/ryan/Documents/automation-rework/media/playlists/"+playlist+"/playlist.txt", "r") as f:
+        songs = [line.rstrip().split(",") for line in f.readlines()]
+        for song in songs:
+            if song[3] == "":
+                song[3] = "-"
+    page_name = "Playlist Overview: " + playlist
+    return render_template('playlist_view.html', page_name=page_name, pname = playlist, songs=songs)
 
 
 @app.route("/songs")
