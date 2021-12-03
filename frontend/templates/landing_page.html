@@ -1,19 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h1 class="fixed-top" style="text-align: center;">{{page_name}}</h1>
+	<h1 class="position-fixed" style="left: 450">{{page_name}}</h1>
 
+	<a class="btn btn-outline-dark position-fixed" role="button" style="right: 50px; top: 10px; border-width: 2px;" href="/settings">Settings</a>
+	
 
 	<div class="fixed-bottom">
 	  <h1>
 		<ul class="nav justify-content-center nav-fill">
 			<li class="nav-item">
-				<a href="/playlists" class="btn btn-lg btn-outline-dark" tabindex="-1" role="button">Playlists</a>
+				<a href="/playlists" class="btn btn-lg btn-outline-dark" style="border-width: 2px;" tabindex="-1" role="button">Playlists</a>
 			</li>
 			<li class="nav-item">
-				<a href="/programming" class="btn btn-lg btn-outline-dark" tabindex="-1" role="button">Programming</a>
+				<a href="/programming" class="btn btn-lg btn-outline-dark" style="border-width: 2px;" tabindex="-1" role="button">Programming</a>
 			</li>
 			<li class="nav-item">
-				<a href="/logging" class="btn btn-lg btn-outline-dark" tabindex="-1" role="button">View Logs</a>
+				<a href="/logging" class="btn btn-lg btn-outline-dark" style="border-width: 2px;" tabindex="-1" role="button">View Logs</a>
 			</li>
 		</ul>
 	  </h1>

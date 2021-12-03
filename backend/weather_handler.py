@@ -1,11 +1,11 @@
 #! /usr/bin/env python
 
 import os
-from constants import MEDIA_ROOT_DIRECTORY, WEATHER_SUBDIRECTORY
+from constants import MEDIA_ROOT_DIRECTORY, WEATHER_SUBDIRECTORY, PROGRAMMING_SUBDIRECTORY
 import player
 
 def weather_handler():
-    weather_directory = MEDIA_ROOT_DIRECTORY + WEATHER_SUBDIRECTORY
+    weather_directory = MEDIA_ROOT_DIRECTORY + PROGRAMMING_SUBDIRECTORY + WEATHER_SUBDIRECTORY
     forecasts_in_directory = sorted(os.listdir(weather_directory), reverse=True)
     if len(forecasts_in_directory) > 0:
         forecast_to_play = forecasts_in_directory[0]
