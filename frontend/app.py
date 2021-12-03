@@ -11,6 +11,10 @@ def landing_page():
 def admin():
     return render_template('landing_page.html', page_name="Automation Admin")
 
+@app.route("/settings")
+def settings():
+    return render_template('settings.html', page_name="Settings")
+
 
 @app.route("/playlists")
 def playlists():
@@ -48,6 +52,12 @@ def errorlogs():
 @app.route("/playlist_logs")
 def playlistlogs():
     return render_template('logging_templates/playlist_logs.html', page_name="Playlist Logs")
+
+def toggleLogging():
+    if os.getenv('LOGGING')=="False":
+        os.environ['LOGGING']="True"
+    else:
+        os.environ['LOGGING']="False"
 
 if __name__ == '__main__':
     app.run(debug=True)

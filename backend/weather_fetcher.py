@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 import requests
 import configparser
-from constants import WEATHER_API_URL, WEATHER_SCRIPT, MEDIA_ROOT_DIRECTORY, WEATHER_SUBDIRECTORY, CONFIG_FILE_PATH
+from constants import WEATHER_API_URL, WEATHER_SCRIPT, MEDIA_ROOT_DIRECTORY, PROGRAMMING_SUBDIRECTORY, WEATHER_SUBDIRECTORY, CONFIG_FILE_PATH
 import time
 from gtts import gTTS
 
@@ -40,7 +40,7 @@ def main():
 
         # Saves as weather-{year}-{month}-{day}-{hour}-{minute}-{am/pm}.mp3
         filename = "weather-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
-        tts.save(MEDIA_ROOT_DIRECTORY + WEATHER_SUBDIRECTORY + filename)
+        tts.save(MEDIA_ROOT_DIRECTORY + PROGRAMMING_SUBDIRECTORY + WEATHER_SUBDIRECTORY + filename)
 
 
 if __name__ == "__main__":
