@@ -1,4 +1,4 @@
-<!DOCSTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -19,6 +19,8 @@
 			});
 	</script>
 
+    <Title> {{page_name}}</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
@@ -32,10 +34,9 @@
 </head>
 
 <body>
-    <Title> {{page_name}}</title>
     {% block content %}{% endblock %}
     <div
-        class="background-image"
+        class="background"
         style="
         height: 100vh;
         background-repeat: no-repeat;

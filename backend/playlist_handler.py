@@ -1,24 +1,29 @@
 import os
-from backend.constants import MEDIA_ROOT_DIRECTORY, PLAYLISTS_SUBDIRECTORY, IGNORED_FILE_EXTENSIONS
-import random
+import constants
 import player
 
-test = True
+# Prerequisites: Passing the path to the playlist folder as a string, and the index
+# of the next song to be played as an integer
+# Description: Plays the song with the passed index from the passed playlist directory.
+# If the file with the index passed has an ignored file extension, the file will
+# be skipped and nothing will be played.
+# Return: The index of the next song to be played, or -1 if the playlist is over
+def playlist_handler(folderPath, songNum):
+    songList=sorted(os.listdir(folderPath))
+    if songNum>=len(songList):
+        return -1
+    else:
+        if(any(element in songList[songNum] for element in constants.IGNORED_FILE_EXTENSIONS)):
+            songNum+=1
+            if songNum>=len(songList):
+                return -1
 
-
-def playlist_handler():
-    random.seed()
-    if test:
-        MEDIA_ROOT_DIRECTORY = "../media"
-    playlist_to_play = random.choice(os.listdir(MEDIA_ROOT_DIRECTORY + PLAYLISTS_SUBDIRECTORY))
-    playlist_path = MEDIA_ROOT_DIRECTORY + PLAYLISTS_SUBDIRECTORY + "/" + playlist_to_play
-    songs = [x for x in os.listdir(playlist_path) if not x.endswith(IGNORED_FILE_EXTENSIONS)]
-    if test:
-        for song in songs:
-            print(playlist_path + "/" + song)
-    for song in songs:
-        player.play(playlist_path + "/" + song)
-
+        songPath=str(folderPath+"/"+songList[songNum])
+        player.play(songPath)
+        #return the number of the next song to be played
+        return (songNum+1)
 
 if __name__ == "__main__":
-    playlist_handler()
+    currSong=0
+    while(currSong>=0):
+        currSong=playlist_handler("media/playlists/GogoJuic3",currSong)
