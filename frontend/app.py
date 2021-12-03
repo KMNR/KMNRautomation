@@ -13,10 +13,6 @@ def landing_page():
         funny_slider = choice(options)
     return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine", slider=funny_slider)
 
-@app.route("/settings")
-def settings():
-    return render_template('settings.html', page_name="Settings")
-
 @app.route("/playlists")
 def playlists():
     return render_template('playlists.html', page_name="Playlists")
