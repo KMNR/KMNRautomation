@@ -1,7 +1,7 @@
 # KMNR Ultimate Music Machine
 ### Overview
 
-The KMNR Ultimate Music Machine (KUMM) acts as a replacement for the old automation tool, SHTR. It implements features such as town and campus TTS, weather TTS, playlist tracking, and automatic logging to (KLAP? I totally forgot).
+The KMNR Ultimate Music Machine (KUMM) acts as a replacement for the old automation tool, SHTR. It implements features such as town and campus Text-To-Speech (TTS), weather TTS, improved web interface, playlist tracking, and automatic logging to KLAP.
 
 ### Installation
 #### Requirements
@@ -18,8 +18,8 @@ The KMNR Ultimate Music Machine (KUMM) acts as a replacement for the old automat
    4. Verify you are in the virtual environment - ``(venv)`` should appear at the start of the command line. 
 2. Install all necessary packages by running ``pip install -r requirements.txt`` in the same directory as requirements.txt.
 3. Update the settings file in your preferred editor.
-   1. Ensure the OpenWeatherMap API key ``owm_api_key`` is up to date.
-   2. Ensure the news API key ``news_api_key`` is up to date.
+   1. Ensure the OpenWeatherMap API key ``owm_api_key`` is up-to-date.
+   2. Ensure the news API key ``news_api_key`` is up-to-date.
 4. Update the supervisord configuration file in your preferred editor.
    1. Update the route to automation on line 83.
       1. This should point to the directory containing ``main.py``.
