@@ -30,7 +30,7 @@ def programming():
 
 @app.route("/logging")
 def logging():
-    return render_template('logging.html', page_name="View Logs")
+    return render_template('logging.html', page_name="View Logs", on_off="FUCKS")
 
 @app.route("/song_logs")
 def songlogs():
@@ -46,6 +46,7 @@ def playlistlogs():
 
 @app.route("/toggle_logging")
 def toggle_logging():
+    global on_or_off
     try:
         f=open("backend/logging.txt","r")
     except:
@@ -59,8 +60,10 @@ def toggle_logging():
     f=open("backend/logging.txt","w")
     if(status=="True"):
         f.write("False")
+        on_or_off = "Off"
     elif(status=="False"):
         f.write("True")
+        on_or_off = "On"
     f.close()
 
     return redirect(request.referrer)
