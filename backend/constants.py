@@ -23,6 +23,7 @@ NEWS_AND_WEATHER_ID = "news-and-weather"
 TOWN_AND_CAMPUS_SUBDIRECTORY = "town-and-campus"
 CONCERT_NEWS_SUBDIRECTORY = "concert-news"
 PROGRAMMING_SCHEDULE_PATH = "daily_programming_schedule.txt"
+LOGGING_STATUS_PATH = "logging.txt"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&units=imperial&appid={}"
 
