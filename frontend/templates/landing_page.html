@@ -9,12 +9,12 @@
 
 
 
-
-<h1>{{on_off}}</h1>
-
   <form method="POST" action="logging">
-    <btn class="btn btn-outline-dark position-fixed" id="flexSwitchCheckChecked" style="border-width: 2px; left: 50px; top:55px" data-bs-toggle="modal" data-bs-target="#exampleModal">oefbnoeqfvb</btn>
+    <btn class="btn btn-outline-dark position-fixed" id="flexSwitchCheckChecked" style="border-width: 2px; left: 50px; top:55px" data-bs-toggle="modal" data-bs-target="#exampleModal">Turn Logging {{on_off}}</btn>
   </form>
+
+
+
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -27,7 +27,7 @@
 		  Are you absolutely sure you want continue?? Like, actually???
 		</div>
 		<div class="modal-footer">
-		  <button id=test type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes i am u idiot</button>
+		  <a href="/toggle_logging/" id=test type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes i am u idiot</a>
 		  <button style="border-color: purple; background-color:purple" type="button" class="btn btn-primary" data-bs-dismiss="modal">No i am being silly</button>
 		</div>
 	  </div>
