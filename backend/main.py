@@ -1,4 +1,5 @@
 from time import localtime, strftime, time, sleep
+import signal
 import configparser
 
 from backend.playlist_handler import playlist_handler
@@ -29,7 +30,7 @@ def main():
     debug = True if cfg["General"]["debug_logging"] == "true" else False
     print(debug)
     # Core loop begins here
-    while run_automation:
+    while True:
         # Check current time
         current_epoch_time = time()
         hours, minutes, am_pm = strftime("%I %M %p", localtime(current_epoch_time)).split(" ")

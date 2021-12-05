@@ -8,6 +8,12 @@ MINUTE_SUBDIRECTORY = "/minutes/"
 AM_PM_SUBDIRECTORY = "/ampm/"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 
+
+# Email Configuration
+EMAIL_TO_SEND_FROM = "kmnrtesting@gmail.com"
+EMAIL_TO_SEND_FROM_PASS = "MichaelGosnell"
+ALERT_RECIPIENTS = ["anotheremail@example.com","realemail@example.com"]
+ALERT_MESSAGE = "KUMM crash detected. Supervisor crash log below.\n\n{}"
 @unique
 class ConstantStrings(Enum):
     PLAYING_TOP_HOUR = "Playing top of the hour ID"
