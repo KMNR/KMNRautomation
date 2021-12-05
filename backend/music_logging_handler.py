@@ -49,10 +49,9 @@ def music_logging_handler(playlist_path):
     browser.back()
     browser.refresh()
 
-    #uncomment these lines to make it actually log
-    #commit_button = browser.find_element(By.XPATH, "//*[contains (text(), 'Commit')]")
-    #commit_button.click()
-    #browser.quit()
+    commit_button = browser.find_element(By.XPATH, "//*[contains (text(), 'Commit')]")
+    commit_button.click()
+    browser.quit()
 
 if __name__ == '__main__':
     music_logging_handler("media/playlists/CaleJuic3/")
