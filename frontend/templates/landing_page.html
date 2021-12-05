@@ -1,9 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+			$(function() {
+				$('a#test').on('click', function(e) {
+					$.getJSON('/toggle_logging',
+							function(data) {
+						window.location.reload(True);
+					});
+					return false;
+				});
+			});
+</script>
+
 	<h1 class="position-fixed" style="left: 450">{{page_name}}</h1>
 
 	<a class="btn btn-outline-dark position-fixed"role="button" style="left: 50px; top: 10px; border-width: 2px;" href="https://git-classes.mst.edu/kmnr-rework/automation-rework">Go to Repository</a>
-	
+
 	<h7 for="customRange1" class="form-label position-fixed" style="right: 50px; top: 10px">{{slider}}</h7>
 	<input type="range" class="form-range position-fixed" style="width: 200; right: 50px; top: 30px" id="customRange1">
 
@@ -27,7 +40,7 @@
 		  Are you absolutely sure you want continue?? Like, actually???
 		</div>
 		<div class="modal-footer">
-		  <a href="/toggle_logging/" id=test type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes i am u idiot</a>
+		  <a action="/toggle_logging" method="post" id=test type="button" class="btn btn-secondary" data-bs-dismiss="modal" onload="window.location.reload();">Yes i am u idiot </a>
 		  <button style="border-color: purple; background-color:purple" type="button" class="btn btn-primary" data-bs-dismiss="modal">No i am being silly</button>
 		</div>
 	  </div>
