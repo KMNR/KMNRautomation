@@ -17,9 +17,9 @@ def send_email(crash_report):
     server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
     server.login(constants.EMAIL_TO_SEND_FROM, constants.EMAIL_TO_SEND_FROM_PASS)
     msg = EmailMessage()
-    msg.set_content(crash_report)
+    msg.set_content(constants.ALERT_MESSAGE.format(crash_report))
     msg['From'] = constants.EMAIL_TO_SEND_FROM
-    msg['To'] = "ryan.kruger91@gmail.com"
+    msg['To'] = ", ".join(constants.ALERT_RECIPIENTS)
     msg['Subject'] = "ALERT: KUMM Outage at {}".format(time.strftime("%Y-%m-%d %I:%M-%p"))
     server.send_message(msg)
     server.quit()

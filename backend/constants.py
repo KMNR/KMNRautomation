@@ -35,10 +35,12 @@ NEWS_SCRIPT = "Here's one of the top stories for today: {}." \
 BLOCKED_NEWS_KEYWORDS = ("sex","suicide")
 BLOCKED_NEWS_SOURCES = ("YouTube", "The Verge")
 
+
+# Email Configuration
 EMAIL_TO_SEND_FROM = "kmnrtesting@gmail.com"
 EMAIL_TO_SEND_FROM_PASS = "MichaelGosnell"
-EMAIL_TO_NOTIFY = "kmnrtesting@gmail.com"
-
+ALERT_RECIPIENTS = ["anotheremail@example.com","realemail@example.com"]
+ALERT_MESSAGE = "KUMM crash detected. Supervisor crash log below.\n\n{}"
 @unique
 class ConstantStrings(Enum):
     PLAYING_TOP_HOUR = "Playing top of the hour ID"
