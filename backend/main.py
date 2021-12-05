@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 from time import localtime, strftime, time, sleep
+import signal
 import configparser
 import random
 import os
@@ -60,7 +61,7 @@ def main():
     # Causing double-play, which is pretty gross
     os.system("pkill -f mpv")
     # Core loop begins here
-    while run_automation:
+    while True:
         # Check current time
         current_epoch_time = time()
         hours, minutes, am_pm = strftime("%I %M %p", localtime(current_epoch_time)).split(" ")
@@ -127,6 +128,7 @@ def main():
             #print(recent_playlists)
 
         sleep(1)
+
 
 if __name__ == "__main__":
     main()
