@@ -1,16 +1,26 @@
 #! /usr/bin/env python3
-from flask import Flask, render_template,redirect, request
+from flask import Flask, render_template, redirect, request
 from random import choice
 import os
 app = Flask(__name__)
-root_dir = "/home/ryan/Documents/automation-rework/frontend"
+root_dir = "/home/ryan/Documents/automation-rework"
+
 @app.route("/")
 def landing_page():
     funny_slider = ""
-    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/frontend/static/slider_values.txt", "r") as f:
+    logging_message = ""
+    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/frontend/static/slider_values.txt", "r") as f:
         options = f.readlines()
         funny_slider = choice(options)
-    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine", slider=funny_slider)
+
+    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt", "r") as f:
+        logging_status = f.read()
+        if logging_status.strip() == "True":
+            logging_message="Off"
+        else:
+            logging_message="On"
+
+    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine", slider=funny_slider, on_off=logging_message)
 
 @app.route("/settings")
 def settings():
@@ -44,26 +54,18 @@ def errorlogs():
 def playlistlogs():
     return render_template('logging_templates/playlist_logs.html', page_name="Playlist Logs")
 
-@app.route("/toggle_logging")
+@app.route("/toggle_logging", methods=['GET', 'POST'])
 def toggle_logging():
-    try:
-        f=open("backend/logging.txt","r")
-    except:
-        f=open("backend/logging.txt","w")
-        f.write("False")
-        f.close()
-        f=open("backend/logging.txt","r")
-    status=f.read()
-    f.close()
-    #os.system(status)
-    f=open("backend/logging.txt","w")
-    if(status=="True"):
-        f.write("False")
-    elif(status=="False"):
-        f.write("True")
-    f.close()
-
-    return redirect(request.referrer)
+    global status
+    status = ""
+    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt" ,"r") as f:
+        status = f.read()
+    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt" ,"w") as f:
+        if status == "True":
+            f.write("False")
+        else:
+            f.write("True")
+    return redirect(request.referrer), status
 
 if __name__ == '__main__':
     app.run(debug=True)

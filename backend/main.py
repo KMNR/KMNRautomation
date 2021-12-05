@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 from time import localtime, strftime, time, sleep
+import signal
 import configparser
 import random
 import os
@@ -55,8 +56,7 @@ def main():
     # Causing double-play, which is pretty gross
     os.system("pkill -f mpv")
     # Core loop begins here
-    while run_automation:
-
+    while True:
         # Check logging status
         f=open(constants.BACKEND_ROOT_DIRECTORY+constants.LOGGING_STATUS_PATH)
         logging=f.read()
@@ -129,6 +129,7 @@ def main():
             #print(recent_playlists)
 
         sleep(1)
+
 
 if __name__ == "__main__":
     main()

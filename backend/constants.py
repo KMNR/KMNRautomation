@@ -46,6 +46,12 @@ DJ_KEY = "c6a4a5ae"
 KELP_ID = "djbs"
 KELP_PW = "snap1man"
 
+
+# Email Configuration
+EMAIL_TO_SEND_FROM = "kmnrtesting@gmail.com"
+EMAIL_TO_SEND_FROM_PASS = "MichaelGosnell"
+ALERT_RECIPIENTS = ["anotheremail@example.com","realemail@example.com"]
+ALERT_MESSAGE = "KUMM crash detected. Supervisor crash log below.\n\n{}"
 @unique
 class ConstantStrings(Enum):
     PLAYING_TOP_HOUR = "Playing top of the hour ID"

@@ -1,20 +1,33 @@
 {% extends "layout.html" %}
 {% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+			$(function() {
+				$('a#test').on('click', function(e) {
+					$.getJSON('/toggle_logging',
+							function(data) {
+						window.location.reload(True);
+					});
+					return false;
+				});
+			});
+</script>
+
 	<h1 class="position-fixed" style="left: 450">{{page_name}}</h1>
 
-	<a class="btn btn-outline-dark position-fixed"role="button" style="right: 50px; top: 10px; border-width: 2px;" href="https://git-classes.mst.edu/kmnr-rework/automation-rework">Go to Repository</a>
-	
-	<h7 for="customRange1" class="form-label position-fixed" style="right: 50px; top: 55px">{{slider}}</h7>
-	<input type="range" class="form-range position-fixed" style="width: 200; right: 50px; top: 75px" id="customRange1">
+	<a class="btn btn-outline-dark position-fixed"role="button" style="left: 50px; top: 10px; border-width: 2px;" href="https://git-classes.mst.edu/kmnr-rework/automation-rework">Go to Repository</a>
+
+	<h7 for="customRange1" class="form-label position-fixed" style="right: 50px; top: 10px">{{slider}}</h7>
+	<input type="range" class="form-range position-fixed" style="width: 200; right: 50px; top: 30px" id="customRange1">
 
 
 
-	<form method="POST" action="logging">
-		<div class="form-check form-switch position-fixed" style="right: 50px; top: 105px">
-    		<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-checked="true">
-        <label for="flexSwitchCheckChecked">Logging On/Off</label>
-    </div>
-	</form>
+  <form method="POST" action="logging">
+    <btn class="btn btn-outline-dark position-fixed" id="flexSwitchCheckChecked" style="border-width: 2px; left: 50px; top:55px" data-bs-toggle="modal" data-bs-target="#exampleModal">Turn Logging {{on_off}}</btn>
+  </form>
+
+
+
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -24,16 +37,15 @@
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">
-		  Are you absolutely sure you want to turn on/off logging?? Like, for everything???
+		  Are you absolutely sure you want continue?? Like, actually???
 		</div>
 		<div class="modal-footer">
-		  <button id=test type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes i am u idiot</button>
+		  <a action="/toggle_logging" method="post" id=test type="button" class="btn btn-secondary" data-bs-dismiss="modal" onload="window.location.reload();">Yes i am u idiot </a>
 		  <button style="border-color: purple; background-color:purple" type="button" class="btn btn-primary" data-bs-dismiss="modal">No i am being silly</button>
 		</div>
 	  </div>
 	</div>
   </div>
-
 </body>
 </html>
 
