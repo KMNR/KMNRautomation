@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 from time import localtime, strftime, time, sleep
+import smtplib
+import signal
 import configparser
 import random
 import os
@@ -11,7 +13,24 @@ import time_handler
 import programming_handler
 import constants
 
+def send_email():
+    server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+    server.login(constants.EMAIL_TO_SEND_FROM, constants.EMAIL_TO_SEND_FROM_PASS)
+    server.sendmail(constants.EMAIL_TO_SEND_FROM, constants.EMAIL_TO_NOTIFY, "The KMNR Ultimate Music Machine was unexpectendly shutdown.")
+
+class KUMMKiller:
+  kill_now = False
+  def __init__(self):
+    signal.signal(signal.SIGINT, self.exit_gracefully)
+    signal.signal(signal.SIGTERM, self.exit_gracefully)
+
+  def exit_gracefully(self, *args):
+    send_email()
+    self.kill_now = True
+    quit()
+
 def main():
+    killer = KUMMKiller()
     random.seed()
     # On initial start, assume we haven't played anything
     played_top_hour = False
@@ -47,7 +66,7 @@ def main():
     # Causing double-play, which is pretty gross
     os.system("pkill -f mpv")
     # Core loop begins here
-    while run_automation:
+    while not killer.kill_now:
         # Check current time
         current_epoch_time = time()
         hours, minutes, am_pm = strftime("%I %M %p", localtime(current_epoch_time)).split(" ")
@@ -111,6 +130,7 @@ def main():
             #print(recent_playlists)
 
         sleep(1)
+
 
 if __name__ == "__main__":
     main()
