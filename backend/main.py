@@ -31,16 +31,11 @@ def main():
     last_edu_segment_time = 1
     edu_segs_this_hour = 0
 
-    #assume we want to log music and programming
-    #we could probably get this from the config file
+    #start with logging off until we get it from the file
     logging=False
 
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
-
-    # Start with logging on
-    if os.getenv('LOGGING')==None:
-        os.environ['LOGGING']="True"
 
     #create at least one weather forecast, news article, and town and campus news reading on startup
     news_fetcher.news_fetcher()
@@ -62,6 +57,12 @@ def main():
     os.system("pkill -f mpv")
     # Core loop begins here
     while True:
+        # Check logging status
+        f=open(constants.BACKEND_ROOT_DIRECTORY+constants.LOGGING_STATUS_PATH)
+        logging=f.read()
+        logging=logging.strip()
+        f.close()
+
         # Check current time
         current_epoch_time = time()
         hours, minutes, am_pm = strftime("%I %M %p", localtime(current_epoch_time)).split(" ")
@@ -121,7 +122,7 @@ def main():
             recent_playlists.pop()
             recent_playlists.insert(0,current_playlist_path)
             #log the playlist
-            if logging:
+            if logging=="True":
                 music_logging_handler.music_logging_handler(current_playlist_path)
             #start next playlist from song at index 0
             current_song_index=0
