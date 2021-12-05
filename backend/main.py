@@ -129,6 +129,22 @@ def main():
 
         sleep(1)
 
+        current_song_index = playlist_handler.playlist_handler(current_playlist_path, current_song_index)
+        print(constants.ConstantStrings.PLAYING_SONG)
+
+        #after a playlist ends,
+        if current_song_index==-1:
+            #update the list of recently played playlists
+            recent_playlists.pop()
+            recent_playlists.insert(0,current_playlist_path)
+            #log the playlist
+            if logging:
+                music_logging_handler.music_logging_handler(current_playlist_path)
+            #start next playlist from song at index 0
+            current_song_index=0
+            #print(recent_playlists)
+
+        sleep(1)
 
 if __name__ == "__main__":
     main()
