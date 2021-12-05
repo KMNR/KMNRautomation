@@ -56,11 +56,10 @@ def playlistlogs():
 
 @app.route("/toggle_logging", methods=['GET', 'POST'])
 def toggle_logging():
-    global status
     status = ""
-    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt" ,"r") as f:
+    with open(root_dir + "/backend/logging.txt" ,"r") as f:
         status = f.read()
-    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt" ,"w") as f:
+    with open(root_dir + "/backend/logging.txt" ,"w") as f:
         if status == "True":
             f.write("False")
         else:
