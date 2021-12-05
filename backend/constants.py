@@ -1,8 +1,8 @@
 from enum import Enum, unique
 
-MEDIA_ROOT_DIRECTORY = "C:/Users/Jennings/Documents/GitHub/automation-rework/media"
-BACKEND_ROOT_DIRECTORY = "C:/Users/Jennings/Documents/GitHub/automation-rework/backend/"
-CONFIG_FILE_PATH = "C:/Users/Jennings/Documents/GitHub/automation-rework/backend/settings.ini"
+MEDIA_ROOT_DIRECTORY = "/home/ryan/Documents/automation-rework/media"
+BACKEND_ROOT_DIRECTORY = "/home/ryan/Documents/automation-rework/backend/"
+CONFIG_FILE_PATH = "/home/ryan/Documents/automation-rework/backend/settings.ini"
 TIME_SUBDIRECTORY = "/time"
 PLAYLISTS_SUBDIRECTORY = "/playlists"
 TIMEIS_SUBDIRECTORY = "/timeis"
