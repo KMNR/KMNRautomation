@@ -1,9 +1,7 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python
 from flask import Flask, render_template, redirect, request
-from random import choice
 import os
 app = Flask(__name__)
-root_dir = "/home/ryan/Documents/automation-rework"
 
 @app.route("/")
 def landing_page():
@@ -25,6 +23,7 @@ def landing_page():
 @app.route("/settings")
 def settings():
     return render_template('settings.html', page_name="Settings")
+
 
 @app.route("/playlists")
 def playlists():

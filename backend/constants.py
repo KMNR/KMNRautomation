@@ -23,7 +23,6 @@ NEWS_AND_WEATHER_ID = "news-and-weather"
 TOWN_AND_CAMPUS_SUBDIRECTORY = "town-and-campus"
 CONCERT_NEWS_SUBDIRECTORY = "concert-news"
 PROGRAMMING_SCHEDULE_PATH = "daily_programming_schedule.txt"
-LOGGING_STATUS_PATH = "logging.txt"
 IGNORED_FILE_EXTENSIONS = (".txt", ".cfg", ".config")
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&units=imperial&appid={}"
 
@@ -46,12 +45,6 @@ DJ_KEY = "c6a4a5ae"
 KELP_ID = "djbs"
 KELP_PW = "snap1man"
 
-
-# Email Configuration
-EMAIL_TO_SEND_FROM = "kmnrtesting@gmail.com"
-EMAIL_TO_SEND_FROM_PASS = "MichaelGosnell"
-ALERT_RECIPIENTS = ["anotheremail@example.com","realemail@example.com"]
-ALERT_MESSAGE = "KUMM crash detected. Supervisor crash log below.\n\n{}"
 @unique
 class ConstantStrings(Enum):
     PLAYING_TOP_HOUR = "Playing top of the hour ID"
