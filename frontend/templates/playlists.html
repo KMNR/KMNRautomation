@@ -9,37 +9,19 @@
 			<a class="btn btn-outline-dark position-fixed"role="button" style="left: 50px; top: 10px; border-width: 2px; width: 75px;" href="/">KUMM</a>
 		</div>
 		<div class="row">
+			{% for playlist in playlists %}
 			<div class="col">
 				<div class="card" style="width: 18rem; background-color: 899481;">
 					<img src="../static/wizard_frog.jpg" class="card-img-top" alt="...">
 					<div class="card-body">
-					  <h5 class="card-title">CaleJuic3</h5>
+					  <h5 class="card-title">{{playlist}}</h5>
 					  <p class="card-text">A playlist</p>
-					  <a href="/songs" class="btn btn-primary stretched-link" style="background-color: 8F6181; border-color: white;">View</a>
-					  
+					  <a href="{{ url_for('playlists') }}/{{playlist}}" class="btn btn-primary stretched-link" style="background-color: 8F6181; border-color: white;">View</a>
 					</div>
 				  </div>
 			</div>
-			<div class="col">
-				<div class="card" style="width: 18rem; background-color: 899481;">
-					<img src="../static/black_cats.jpg" class="card-img-top" alt="...">
-					<div class="card-body">
-					  <h5 class="card-title">GogoJuic3</h5>
-					  <p class="card-text">A playlist</p>
-					  <a href="/songs" class="btn btn-primary stretched-link" style="background-color: 8F6181; border-color: white;">View</a>
-					</div>
-				  </div>
-				</div>
-			<div class="col">
-				<div class="card" style="width: 18rem; background-color: 899481;">
-					<img src="../static/stay_sunny.jpg" class="card-img-top" alt="...">
-					<div class="card-body">
-					  <h5 class="card-title">MCLiminal</h5>
-					  <p class="card-text">A playlist</p>
-					  <a href="/songs" class="btn btn-primary stretched-link" style="background-color: 8F6181; border-color: white;">View</a>
-					</div>
-				  </div>
-			</div>
+			{% endfor %}
+
 			
 		</div>
 	</div>

@@ -9,11 +9,11 @@ root_dir = "/home/ryan/Documents/automation-rework"
 def landing_page():
     funny_slider = ""
     logging_message = ""
-    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/frontend/static/slider_values.txt", "r") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/frontend/static/slider_values.txt", "r") as f:
         options = f.readlines()
         funny_slider = choice(options)
 
-    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt", "r") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/backend/logging.txt", "r") as f:
         logging_status = f.read()
         if logging_status.strip() == "True":
             logging_message="Off"
@@ -28,7 +28,19 @@ def settings():
 
 @app.route("/playlists")
 def playlists():
+    playlists = sorted(os.listdir("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/media/playlists")) 
     return render_template('playlists.html', page_name="Playlists")
+
+@app.route("/playlists/<playlist>")
+def song_view(playlist):
+    songs = []
+    with open("/home/ryan/Documents/automation-rework/media/playlists/"+playlist+"/playlist.txt", "r") as f:
+        songs = [line.rstrip().split(",") for line in f.readlines()]
+        for song in songs:
+            if song[3] == "":
+                song[3] = "-"
+    page_name = "Playlist Overview: " + playlist
+    return render_template('playlist_view.html', page_name=page_name, pname = playlist, songs=songs)
 
 @app.route("/songs")
 def songs():
@@ -57,9 +69,9 @@ def playlistlogs():
 @app.route("/toggle_logging", methods=['GET', 'POST'])
 def toggle_logging():
     status = ""
-    with open(root_dir + "/backend/logging.txt" ,"r") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/backend/logging.txt" ,"r") as f:
         status = f.read()
-    with open(root_dir + "/backend/logging.txt" ,"w") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/backend/logging.txt" ,"w") as f:
         if status == "True":
             f.write("False")
         else:
