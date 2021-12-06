@@ -1,9 +1,7 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python
 from flask import Flask, render_template, redirect, request
-from random import choice
 import os
 app = Flask(__name__)
-root_dir = "/home/ryan/Documents/automation-rework"
 
 @app.route("/")
 def landing_page():
@@ -26,9 +24,34 @@ def landing_page():
 def settings():
     return render_template('settings.html', page_name="Settings")
 
+
 @app.route("/playlists")
 def playlists():
-    return render_template('playlists.html', page_name="Playlists")
+    playlists = sorted(os.listdir("/home/ryan/Documents/automation-rework/media/playlists"))    
+    return render_template('playlists.html', page_name="Playlists", playlists=playlists)
+
+@app.route("/playlists/<playlist>")
+def song_view(playlist):
+    songs = []
+    with open("/home/ryan/Documents/automation-rework/media/playlists/"+playlist+"/playlist.txt", "r") as f:
+        songs = [line.rstrip().split(",") for line in f.readlines()]
+        for song in songs:
+            if song[3] == "":
+                song[3] = "-"
+    page_name = "Playlist Overview: " + playlist
+    return render_template('playlist_view.html', page_name=page_name, pname = playlist, songs=songs)
+
+
+@app.route("/playlists/<playlist>")
+def song_view(playlist):
+    songs = []
+    with open("/home/ryan/Documents/automation-rework/media/playlists/"+playlist+"/playlist.txt", "r") as f:
+        songs = [line.rstrip().split(",") for line in f.readlines()]
+        for song in songs:
+            if song[3] == "":
+                song[3] = "-"
+    page_name = "Playlist Overview: " + playlist
+    return render_template('playlist_view.html', page_name=page_name, pname = playlist, songs=songs)
 
 @app.route("/songs")
 def songs():
