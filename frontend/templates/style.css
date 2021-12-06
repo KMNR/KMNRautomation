@@ -2,6 +2,8 @@ table {
     counter-reset: tableCount;    
     font-size: 24px; 
     background-color:  #e6e6e6  !important;
+    background-color: #e6e6e6; 
+    opacity: 75%;
 }
 .counterCell:before {              
     content: counter(tableCount); 

@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 from flask import Flask, render_template, redirect, request
+from random import choice
 import os
 app = Flask(__name__)
 
@@ -18,6 +19,13 @@ def landing_page():
         else:
             logging_message="On"
 
+    # with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/backend/log.log", "r") as f:
+    #     for line in f:
+    #         pass
+    #     songs = line.split("/")
+    # current_song = songs[len(songs)-1]
+
+
     return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine", slider=funny_slider, on_off=logging_message)
 
 @app.route("/settings")
@@ -27,25 +35,15 @@ def settings():
 
 @app.route("/playlists")
 def playlists():
-    playlists = sorted(os.listdir("/home/ryan/Documents/automation-rework/media/playlists"))    
-    return render_template('playlists.html', page_name="Playlists", playlists=playlists)
+    playlists = sorted(os.listdir("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/media/playlists"))
+    images = os.listdir("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/frontend/static/images")
+    current_image = "../static/images/" + choice(images)
+    return render_template('playlists.html', page_name="Playlists", playlists=playlists, image=current_image)
 
 @app.route("/playlists/<playlist>")
 def song_view(playlist):
     songs = []
-    with open("/home/ryan/Documents/automation-rework/media/playlists/"+playlist+"/playlist.txt", "r") as f:
-        songs = [line.rstrip().split(",") for line in f.readlines()]
-        for song in songs:
-            if song[3] == "":
-                song[3] = "-"
-    page_name = "Playlist Overview: " + playlist
-    return render_template('playlist_view.html', page_name=page_name, pname = playlist, songs=songs)
-
-
-@app.route("/playlists/<playlist>")
-def song_view(playlist):
-    songs = []
-    with open("/home/ryan/Documents/automation-rework/media/playlists/"+playlist+"/playlist.txt", "r") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/media/playlists/"+playlist+"/playlist.txt", "r") as f:
         songs = [line.rstrip().split(",") for line in f.readlines()]
         for song in songs:
             if song[3] == "":
