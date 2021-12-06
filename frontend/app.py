@@ -9,11 +9,11 @@ root_dir = "/home/ryan/Documents/automation-rework"
 def landing_page():
     funny_slider = ""
     logging_message = ""
-    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/frontend/static/slider_values.txt", "r") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/frontend/static/slider_values.txt", "r") as f:
         options = f.readlines()
         funny_slider = choice(options)
 
-    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt", "r") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/backend/logging.txt", "r") as f:
         logging_status = f.read()
         if logging_status.strip() == "True":
             logging_message="Off"
@@ -57,9 +57,9 @@ def playlistlogs():
 @app.route("/toggle_logging", methods=['GET', 'POST'])
 def toggle_logging():
     status = ""
-    with open(root_dir + "/backend/logging.txt" ,"r") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/backend/logging.txt" ,"r") as f:
         status = f.read()
-    with open(root_dir + "/backend/logging.txt" ,"w") as f:
+    with open("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/backend/logging.txt" ,"w") as f:
         if status == "True":
             f.write("False")
         else:
