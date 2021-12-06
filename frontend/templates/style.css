@@ -1,0 +1,9 @@
+table {
+    counter-reset: tableCount;    
+    font-size: 24px; 
+    background-color:  #e6e6e6  !important;
+}
+.counterCell:before {              
+    content: counter(tableCount); 
+    counter-increment: tableCount; 
+}

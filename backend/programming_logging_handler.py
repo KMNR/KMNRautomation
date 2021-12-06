@@ -59,12 +59,8 @@ def programming_logging_handler(filename,filepath,programming_type):
         programming_len=MP3(filepath).info.length
 
     browser = webdriver.Firefox()
-    try:
-        browser.get('https://'+KELP_ID+':'+KELP_PW+'@kelp.kmnr.org/show')
-    except:
-        print("couldn't log in to KELP!")
-        browser.quit()
-        return
+    browser.get('https://'+KELP_ID+':'+KELP_PW+'@kelp.kmnr.org/show')
+
     #find the appropriate box to type into
     #news&weather is a special case because of the ampersand
     if box_id=="news&weather":
