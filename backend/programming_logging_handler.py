@@ -86,10 +86,9 @@ def programming_logging_handler(filename,filepath,programming_type):
     actions.send_keys(Keys.TAB+str(len_min)+":"+str(len_sec)+Keys.ENTER)
     actions.perform()
 
-    #uncomment these lines to make it actually finish by logging out
-    #logout_button = browser.find_element(By.XPATH, "//a[@href='/accounts/logout/']")
-    #logout_button.click()
-    #browser.quit()
+    logout_button = browser.find_element(By.XPATH, "//a[@href='/accounts/logout/']")
+    logout_button.click()
+    browser.quit()
 
     return(1)
 
