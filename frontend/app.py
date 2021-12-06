@@ -48,6 +48,7 @@ def song_view(playlist):
         for song in songs:
             if song[3] == "":
                 song[3] = "-"
+    print(songs)
     page_name = "Playlist Overview: " + playlist
     return render_template('playlist_view.html', page_name=page_name, pname = playlist, songs=songs)
 
@@ -57,7 +58,16 @@ def songs():
 
 @app.route("/programming")
 def programming():
-    return render_template('programming.html', page_name="Programming")
+    programs = os.listdir("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/media/programming")[1:]
+    print(programs)
+    return render_template('programming.html', page_name="Programming", list_of_programs=programs)
+
+@app.route("/programming/<program>")
+def program_view(program):
+    program_content = os.listdir("C:/Users/weste/OneDrive/Documents/Class/CS4096/automation-rework-1/media/programming/"+program)
+    page_name = "Program Overview: " + program
+    
+    return render_template('program_view.html', page_name=page_name, pname = program, program_content=program_content)
 
 @app.route("/logging")
 def logging():
