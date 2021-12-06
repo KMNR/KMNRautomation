@@ -24,7 +24,7 @@ def main():
 
     #start with no playlists or songs played yet
     current_playlist_path = ""
-    recent_playlists = ["",""]
+    recent_playlists = ["","","","","","","","","","","","","",""]
     current_song_index = 0
 
     # set time of last educational segment play to epoch
