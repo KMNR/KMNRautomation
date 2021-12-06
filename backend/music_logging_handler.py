@@ -9,7 +9,13 @@ import time
 # Returns: None
 def music_logging_handler(playlist_path):
     browser = webdriver.Firefox()
-    browser.get('http://klap.kmnr.org/logger/new')
+    try:
+        browser.get('http://klap.kmnr.org/logger/new')
+    except:
+        print("couldn't open KLAP!")
+        browser.quit()
+        return
+
     with open(playlist_path+"/playlist.txt") as f:
         log = f.read()
 
@@ -43,10 +49,9 @@ def music_logging_handler(playlist_path):
     browser.back()
     browser.refresh()
 
-    #uncomment these lines to make it actually log
-    #commit_button = browser.find_element(By.XPATH, "//*[contains (text(), 'Commit')]")
-    #commit_button.click()
-    #browser.quit()
+    commit_button = browser.find_element(By.XPATH, "//*[contains (text(), 'Commit')]")
+    commit_button.click()
+    browser.quit()
 
 if __name__ == '__main__':
     music_logging_handler("media/playlists/CaleJuic3/")

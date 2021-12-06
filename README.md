@@ -1,16 +1,17 @@
 # KMNR Ultimate Music Machine
-### Overview
 
-The KMNR Ultimate Music Machine (KUMM) acts as a replacement for the old automation tool, SHTR. It implements features such as town and campus Text-To-Speech (TTS), weather TTS, improved web interface, playlist tracking, and automatic logging to KLAP.
+The KMNR Ultimate Music Machine was created to replace the previous automation system for KMNR radio station's DJs and employees. This is because the old system was outdated, difficult to maintain, and hard to use. We created this system based off the previous one with an updated front and backend, plus a few new, useful features.
 
-### Installation
+## Installation
 #### Requirements
 
 - Python 3.7+
 - pip 21.1.2+
 - mpv
 
-#### Steps
+
+### Linux
+
 1. (Optional, but *highly* recommended) Instantiate a virtual environment for the python installation.
    1. Run ``pip install virtualenv``
    2. Run ``virtualenv venv``
@@ -44,4 +45,35 @@ The KMNR Ultimate Music Machine (KUMM) acts as a replacement for the old automat
 
 At this point, automation has been successfully started!
 
-### Operation
+
+
+## How to Use
+
+## Tech Stack
+Python 3.9
+
+Flask
+
+Uptime Manager - Supervisord
+
+
+## Credit
+This project was created/updated by:
+
+Ryan Kruger
+
+Caleb Roth
+
+Anne Marie Westervelt
+
+Jennings Randolph
+
+Morgen Nicodemus
+
+Preston Dailey
+
+For their CS 4096/4097 class credit
+
+(and Bingley the cat contributed the line below)
+
+lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll./.

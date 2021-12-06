@@ -59,8 +59,12 @@ def programming_logging_handler(filename,filepath,programming_type):
         programming_len=MP3(filepath).info.length
 
     browser = webdriver.Firefox()
-    browser.get('https://'+KELP_ID+':'+KELP_PW+'@kelp.kmnr.org/show')
-
+    try:
+        browser.get('https://'+KELP_ID+':'+KELP_PW+'@kelp.kmnr.org/show')
+    except:
+        print("couldn't log in to KELP!")
+        browser.quit()
+        return
     #find the appropriate box to type into
     #news&weather is a special case because of the ampersand
     if box_id=="news&weather":
@@ -82,10 +86,9 @@ def programming_logging_handler(filename,filepath,programming_type):
     actions.send_keys(Keys.TAB+str(len_min)+":"+str(len_sec)+Keys.ENTER)
     actions.perform()
 
-    #uncomment these lines to make it actually finish by logging out
-    #logout_button = browser.find_element(By.XPATH, "//a[@href='/accounts/logout/']")
-    #logout_button.click()
-    #browser.quit()
+    logout_button = browser.find_element(By.XPATH, "//a[@href='/accounts/logout/']")
+    logout_button.click()
+    browser.quit()
 
     return(1)
 

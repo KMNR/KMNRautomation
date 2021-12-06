@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 from time import localtime, strftime, time, sleep
+import signal
 import configparser
 import random
 import os
@@ -30,16 +31,11 @@ def main():
     last_edu_segment_time = 1
     edu_segs_this_hour = 0
 
-    #assume we want to log music and programming
-    #we could probably get this from the config file
+    #start with logging off until we get it from the file
     logging=False
 
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
-
-    # Start with logging on
-    if os.getenv('LOGGING')==None:
-        os.environ['LOGGING']="True"
 
     #create at least one weather forecast, news article, and town and campus news reading on startup
     news_fetcher.news_fetcher()
@@ -60,7 +56,13 @@ def main():
     # Causing double-play, which is pretty gross
     os.system("pkill -f mpv")
     # Core loop begins here
-    while run_automation:
+    while True:
+        # Check logging status
+        f=open(constants.BACKEND_ROOT_DIRECTORY+constants.LOGGING_STATUS_PATH)
+        logging=f.read()
+        logging=logging.strip()
+        f.close()
+
         # Check current time
         current_epoch_time = time()
         hours, minutes, am_pm = strftime("%I %M %p", localtime(current_epoch_time)).split(" ")
@@ -110,6 +112,23 @@ def main():
         # Choose the next playlist
         while(current_playlist_path in recent_playlists):
             current_playlist_path = constants.MEDIA_ROOT_DIRECTORY + constants.PLAYLISTS_SUBDIRECTORY + "/" + random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY + constants.PLAYLISTS_SUBDIRECTORY))
+
+        current_song_index = playlist_handler.playlist_handler(current_playlist_path, current_song_index)
+        print(constants.ConstantStrings.PLAYING_SONG)
+
+        #after a playlist ends,
+        if current_song_index==-1:
+            #update the list of recently played playlists
+            recent_playlists.pop()
+            recent_playlists.insert(0,current_playlist_path)
+            #log the playlist
+            if logging=="True":
+                music_logging_handler.music_logging_handler(current_playlist_path)
+            #start next playlist from song at index 0
+            current_song_index=0
+            #print(recent_playlists)
+
+        sleep(1)
 
         current_song_index = playlist_handler.playlist_handler(current_playlist_path, current_song_index)
         print(constants.ConstantStrings.PLAYING_SONG)

@@ -1,20 +1,30 @@
-#! /usr/bin/env python
-from flask import Flask, render_template
+#! /usr/bin/env python3
+from flask import Flask, render_template, redirect, request
+from random import choice
 import os
 app = Flask(__name__)
+root_dir = "/home/ryan/Documents/automation-rework"
 
 @app.route("/")
 def landing_page():
-    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine")
+    funny_slider = ""
+    logging_message = ""
+    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/frontend/static/slider_values.txt", "r") as f:
+        options = f.readlines()
+        funny_slider = choice(options)
 
-@app.route("/admin")
-def admin():
-    return render_template('landing_page.html', page_name="Automation Admin")
+    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt", "r") as f:
+        logging_status = f.read()
+        if logging_status.strip() == "True":
+            logging_message="Off"
+        else:
+            logging_message="On"
+
+    return render_template('landing_page.html', page_name="KMNR Ultimate Music Machine", slider=funny_slider, on_off=logging_message)
 
 @app.route("/settings")
 def settings():
     return render_template('settings.html', page_name="Settings")
-
 
 @app.route("/playlists")
 def playlists():
@@ -57,11 +67,17 @@ def errorlogs():
 def playlistlogs():
     return render_template('logging_templates/playlist_logs.html', page_name="Playlist Logs")
 
-def toggleLogging():
-    if os.getenv('LOGGING')=="False":
-        os.environ['LOGGING']="True"
-    else:
-        os.environ['LOGGING']="False"
+@app.route("/toggle_logging", methods=['GET', 'POST'])
+def toggle_logging():
+    status = ""
+    with open(root_dir + "/backend/logging.txt" ,"r") as f:
+        status = f.read()
+    with open(root_dir + "/backend/logging.txt" ,"w") as f:
+        if status == "True":
+            f.write("False")
+        else:
+            f.write("True")
+    return redirect(request.referrer), status
 
 if __name__ == '__main__':
     app.run(debug=True)
