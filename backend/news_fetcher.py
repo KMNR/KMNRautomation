@@ -35,7 +35,11 @@ def news_fetcher():
     article_source = top_headlines['articles'][articleNum]['source']['name']
     script = constants.NEWS_SCRIPT.format(article_text,article_source)
 
-    tts = gTTS(script, lang='en')
+    try:
+        tts = gTTS(script, lang='en')
+    except:
+        print("error: gtts refused the request!")
+        return
 
     filename = "news-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
     tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.NEWS_SUBDIRECTORY+filename)

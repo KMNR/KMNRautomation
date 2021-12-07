@@ -32,7 +32,7 @@ def main():
     edu_segs_this_hour = 0
 
     #start with logging off until we get it from the file
-    logging=False
+    logging="False"
 
     # Toggle to gracefully shutdown automation after next iteration of main loop
     run_automation = True
@@ -139,7 +139,7 @@ def main():
             recent_playlists.pop()
             recent_playlists.insert(0,current_playlist_path)
             #log the playlist
-            if logging:
+            if logging=="True":
                 music_logging_handler.music_logging_handler(current_playlist_path)
             #start next playlist from song at index 0
             current_song_index=0

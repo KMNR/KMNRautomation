@@ -105,12 +105,16 @@ def programming_handler(segs_played, hour, am_pm, logging):
             elif seg_to_play.strip() == constants.CONCERT_NEWS_SUBDIRECTORY:
                 f = open(constants.BACKEND_ROOT_DIRECTORY+"concert-news.txt")
                 concert_news_text = f.read()
-                tts = gTTS(concert_news_text, lang='en')
-                tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
-                exit_status=player.play(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
-                if (exit_status and logging=="True"):
-                    programming_logging_handler.programming_logging_handler(None,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3",constants.CONCERT_NEWS_SUBDIRECTORY)
-                return exit_status
+                try:
+                    tts = gTTS(concert_news_text, lang='en')
+                    tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
+                    exit_status=player.play(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
+                    if (exit_status and logging=="True"):
+                        programming_logging_handler.programming_logging_handler(None,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3",constants.CONCERT_NEWS_SUBDIRECTORY)
+                    return exit_status
+                except:
+                    print("error: gtts refused the request!")
+                    return 0
             else:
                 print("couldn't recognize the path as a valid edu segment!")
                 return(0)

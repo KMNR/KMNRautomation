@@ -36,7 +36,11 @@ def main():
         # Generate weather forecast script
         script = WEATHER_SCRIPT.format(todays_max, todays_min, todays_forecast, current_temp, feels_like
                                        , current_humidity, current_weather_description)
-        tts = gTTS(script, lang='en')
+        try:
+            tts = gTTS(script, lang='en')
+        except:
+            print("error: gtts refused the request!")
+            return 0
 
         # Saves as weather-{year}-{month}-{day}-{hour}-{minute}-{am/pm}.mp3
         filename = "weather-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
