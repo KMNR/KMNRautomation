@@ -14,7 +14,7 @@ def write_stderr(s):
     sys.stderr.flush()
 
 def send_email(crash_report):
-    server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+    server = smtplib.SMTP_SSL("smtp.gmail.com", 587)
     server.login(constants.EMAIL_TO_SEND_FROM, constants.EMAIL_TO_SEND_FROM_PASS)
     msg = EmailMessage()
     msg.set_content(constants.ALERT_MESSAGE.format(crash_report))
