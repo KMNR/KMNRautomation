@@ -28,7 +28,11 @@ def town_and_campus_fetcher():
         town_and_campus_text=town_and_campus_text+TOWN_AND_CAMPUS_ENDING
 
         filename = "/town-and-campus-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
-        tts = gTTS(town_and_campus_text, lang='en')
+        try:
+            tts = gTTS(town_and_campus_text, lang='en')
+        except:
+            print("error: gtts refused the request!")
+            return 0
         tts.save(MEDIA_ROOT_DIRECTORY+PROGRAMMING_SUBDIRECTORY+"/"+TOWN_AND_CAMPUS_SUBDIRECTORY+filename)
         return(1)
     else:

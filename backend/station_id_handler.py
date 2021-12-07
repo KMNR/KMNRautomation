@@ -20,7 +20,7 @@ def station_id_handler(min,logging):
         fileName=random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY))
         filePath=constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY+fileName
         #if the station ID played properly and we're loggging, log it
-        if player.play(filePath) and logging:
+        if player.play(filePath) and logging=="True":
             programming_logging_handler.programming_logging_handler(fileName,filePath,constants.LEGAL_STATION_ID_SUBDIRECTORY)
     else:
         #player.play(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY)))
