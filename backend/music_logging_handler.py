@@ -9,7 +9,7 @@ import time
 # Returns: None
 def music_logging_handler(playlist_path):
     browser = webdriver.Firefox()
-        try:
+    try:
         browser.get('http://klap.kmnr.org/logger/new')
     except:
         print("couldn't open KLAP!")
