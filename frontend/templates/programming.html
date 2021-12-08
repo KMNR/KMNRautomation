@@ -4,13 +4,11 @@
 	
 <a class="btn btn-outline-dark position-fixed"role="button" style="left: 50px; top: 10px; border-width: 2px;" href="/">KUMM</a>
 	
-
+	
 	<ul class="list-group list-group-flush position-fixed" style="width: 500px; top: 200px; left: 425px;">
-		<li class="list-group-item" style="background-color: D18564;">An item</li>
-		<li class="list-group-item" style="background-color: D18564;">A second item</li>
-		<li class="list-group-item" style="background-color: D18564;">A third item</li>
-		<li class="list-group-item" style="background-color: D18564;">A fourth item</li>
-		<li class="list-group-item" style="background-color: D18564;">And a fifth one</li>
-	  </ul>
-
+		{% for program in list_of_programs %}
+		<a href="{{ url_for('programming') }}/{{program}}" class="list-group-item" style="background-color: D18564;">{{program}}</a>
+		{% endfor %}
+	</ul>
+	
 {% endblock %}

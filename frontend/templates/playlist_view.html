@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid position-fixed overflow-auto" style="height: 100%;">
+      <a class="btn btn-outline-dark position-fixed"role="button" style="left: 50px; top: 10px; border-width: 2px;" href="/playlists">Back to Playlists</a>
+        <h1 class="text-center">{{pname}}</h1>
+        <table class="table table-hover text-medium table-bordered table-sm" style="background-color: rgb(245, 201, 56); opacity: 90%;">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Song</th>
+                  <th scope="col">Artist</th>
+                  <th scope="col">Album</th>
+                  <th scope="col">Label</th>
+                </tr>
+              </thead>
+            <tbody>
+                {% for song in songs %}
+                <tr>
+                    <td class="counterCell"></td>
+                    <td>{{song[0]}}</td>
+                    <td>{{song[1]}}</td>
+                    <td>{{song[2]}}</td>
+                    <td>{{song[3]}}</td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+        </table> 
+    </div>
+    {% endblock %}    
+</body>

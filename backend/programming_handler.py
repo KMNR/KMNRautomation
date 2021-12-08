@@ -63,8 +63,7 @@ def programming_handler(segs_played, hour, am_pm, logging):
                 profile_america_filename = date.strftime("%Y%m%d")
                 profile_america_filename = "pa"+profile_america_filename[2:]+".mp3"
                 exit_status=player.play(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.PROFILE_AMERICA_SUBDIRECTORY+"/"+profile_america_filename)
-                if (exit_status and logging=="True"):
-                    programming_logging_handler.programming_logging_handler(profile_america_filename,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.PROFILE_AMERICA_SUBDIRECTORY+"/"+profile_america_filename,constants.PROFILE_AMERICA_SUBDIRECTORY)
+                if (exit_status and logging=="True"):                    programming_logging_handler.programming_logging_handler(profile_america_filename,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.PROFILE_AMERICA_SUBDIRECTORY+"/"+profile_america_filename,constants.PROFILE_AMERICA_SUBDIRECTORY)
                 return exit_status
 
             #if there are subdirectories for that programming type, choose a subdirectory and an mp3 file
