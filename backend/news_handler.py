@@ -11,12 +11,15 @@ def news_handler():
     if len(articles_in_directory) > 0:
         article_to_play = articles_in_directory[0]
         exit_status=player.play(news_directory+article_to_play)
+        '''
         #clean up the directory afterwards
+        
         try:
             for f in os.listdir(news_directory):
                 os.remove(news_directory+f)
         except e:
             print(e)
+        '''
         return(exit_status)
     else:
         print("no news articles found to play!")

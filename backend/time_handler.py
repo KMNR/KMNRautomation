@@ -20,8 +20,13 @@ def time_handler(hour, minute, am_pm):
     hr_media_folder = constants.MEDIA_ROOT_DIRECTORY + constants.TIME_SUBDIRECTORY + constants.HOUR_SUBDIRECTORY + str(hour)
     min_media_folder = constants.MEDIA_ROOT_DIRECTORY + constants.TIME_SUBDIRECTORY + constants.MINUTE_SUBDIRECTORY + str(minute)
     am_pm_media_folder = constants.MEDIA_ROOT_DIRECTORY + constants.TIME_SUBDIRECTORY + constants.AM_PM_SUBDIRECTORY + str(am_pm).lower()
-    if (str(am_pm).lower()=="pm" and hour>=6 and random.random()>=0.5):
+    if (str(am_pm).lower()=="pm" and hour>=6 and hour<12 and random.random()>=0.5):
         am_pm_media_folder=am_pm_media_folder+constants.AT_NIGHT_SUBDIRECTORY
+
+    am_pm_list = os.listdir(am_pm_media_folder)
+    if('at_night' in am_pm_list):
+        am_pm_list.remove('at_night')
+
     if test:
         print(timeis_media_folder)
         print(hr_media_folder)
@@ -30,7 +35,8 @@ def time_handler(hour, minute, am_pm):
     timeis_audio_to_play = timeis_media_folder + "/" + random.choice(os.listdir(timeis_media_folder))
     hr_audio_to_play = hr_media_folder + "/" + random.choice(os.listdir(hr_media_folder))
     min_audio_to_play = min_media_folder + "/" + random.choice(os.listdir(min_media_folder))
-    am_pm_to_play = am_pm_media_folder + "/" + random.choice(os.listdir(am_pm_media_folder))
+    am_pm_to_play = am_pm_media_folder + "/" + random.choice(am_pm_list)
+    print(am_pm_list)
     if test:
         print(timeis_audio_to_play)
         print(hr_audio_to_play)
@@ -42,5 +48,6 @@ def time_handler(hour, minute, am_pm):
     player.play(am_pm_to_play)
 
 
+
 if __name__ == "__main__":
-    time_handler(12, 30, "pm")
+    time_handler(12, 34, "pm")

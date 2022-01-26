@@ -10,11 +10,13 @@ def weather_handler():
     if len(forecasts_in_directory) > 0:
         forecast_to_play = forecasts_in_directory[0]
         status_code = player.play(weather_directory+forecast_to_play)
+        '''
         try:
             for f in os.listdir(weather_directory):
                 os.remove(weather_directory+f)
         except e:
             print(e)
+        '''
     else:
         return 1
 if __name__ == "__main__":

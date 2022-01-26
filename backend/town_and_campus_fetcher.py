@@ -3,6 +3,7 @@ from constants import TOWN_AND_CAMPUS_URL, TOWN_AND_CAMPUS_PRELUDE, TOWN_AND_CAM
 from bs4 import BeautifulSoup
 from gtts import gTTS
 import time
+import os
 
 # Prerequisites: None
 # Description: Pulls town and campus news from kmnr.org and saves an mp3 tts reading
@@ -27,13 +28,18 @@ def town_and_campus_fetcher():
             town_and_campus_text=town_and_campus_text+(str(title_results[i])[4:-5])+". "+((str(body_results[i])[34:-23]).replace("<br/>",". "))
         town_and_campus_text=town_and_campus_text+TOWN_AND_CAMPUS_ENDING
 
-        filename = "/town-and-campus-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
+        filename = "town-and-campus-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
         try:
-            tts = gTTS(town_and_campus_text, lang='en')
+            tts = gTTS(town_and_campus_text)
         except:
             print("error: gtts refused the request!")
             return 0
-        tts.save(MEDIA_ROOT_DIRECTORY+PROGRAMMING_SUBDIRECTORY+"/"+TOWN_AND_CAMPUS_SUBDIRECTORY+filename)
+        tts.save(MEDIA_ROOT_DIRECTORY+PROGRAMMING_SUBDIRECTORY+"/"+TOWN_AND_CAMPUS_SUBDIRECTORY+"/"+filename)
+        
+        for f in os.listdir(MEDIA_ROOT_DIRECTORY+PROGRAMMING_SUBDIRECTORY+"/"+TOWN_AND_CAMPUS_SUBDIRECTORY):
+            if f != filename: 
+                os.remove(MEDIA_ROOT_DIRECTORY+PROGRAMMING_SUBDIRECTORY+"/"+TOWN_AND_CAMPUS_SUBDIRECTORY+"/"+f)
+        
         return(1)
     else:
         print("error: every town and campus news item should have a body and a title!")

@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.by import By
 from constants import KELP_ID, KELP_PW, LEGAL_STATION_ID_SUBDIRECTORY, PROFILE_AMERICA_SUBDIRECTORY, NEWS_AND_WEATHER_ID, TOWN_AND_CAMPUS_SUBDIRECTORY, CONCERT_NEWS_SUBDIRECTORY
 from selenium.webdriver.common.action_chains import ActionChains
@@ -58,7 +59,9 @@ def programming_logging_handler(filename,filepath,programming_type):
     else:
         programming_len=MP3(filepath).info.length
 
-    browser = webdriver.Firefox()
+    opts=FirefoxOptions()
+    opts.add_argument("--headless")
+    browser = webdriver.Firefox(firefox_options=opts)
     try:
         browser.get('https://'+KELP_ID+':'+KELP_PW+'@kelp.kmnr.org/show')
     except:

@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.by import By
 from constants import DJ_KEY
 import time
@@ -8,7 +9,9 @@ import time
 # Description: Logs the playlist at the path provided at klap.kmnr.org
 # Returns: None
 def music_logging_handler(playlist_path):
-    browser = webdriver.Firefox()
+    opts = FirefoxOptions()
+    opts.headless = True
+    browser = webdriver.Firefox(options=opts)
     try:
         browser.get('http://klap.kmnr.org/logger/new')
     except:
@@ -54,4 +57,4 @@ def music_logging_handler(playlist_path):
     browser.quit()
 
 if __name__ == '__main__':
-    music_logging_handler("media/playlists/CaleJuic3/")
+    music_logging_handler("/home/kmnr/automation-rework/media/playlists/Cosmic11/")

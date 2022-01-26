@@ -34,17 +34,17 @@ WEATHER_SCRIPT = "Now for today's weather. The high today is {} degrees, and the
 NEWS_SCRIPT = "Here's one of the top stories for today: {}." \
               "The full story can be read at {}."
 
-BLOCKED_NEWS_KEYWORDS = ("sex","suicide","assault","gun","body","weapon")
-BLOCKED_NEWS_SOURCES = ("YouTube","The Verge","Breitbart News","CNN Spanish","Crypto Coins News","Reddit /r/all")
+BLOCKED_NEWS_KEYWORDS = ("sex","suicide","assault","gun","body","weapon","homicide","kill","firearm")
+BLOCKED_NEWS_SOURCES = ("YouTube","The Verge","Breitbart News","CNN Spanish","Crypto Coins News","Reddit /r/all","NHL News","Bleacher Report","Bloomberg","Business Insider","NFL News","ESPN","Fox Sports")
 
 TOWN_AND_CAMPUS_URL = "https://kmnr.org/townandcampus"
 TOWN_AND_CAMPUS_PRELUDE = "Town & Campus News: "
 TOWN_AND_CAMPUS_BUFFER = ". The next event is: "
 TOWN_AND_CAMPUS_ENDING = ". Town & Campus News is read five times daily on the air, and is also available on our webpage (kmnr.org). Organizations may submit announcements to be read by filling out our online forms."
 
-DJ_KEY = "c6a4a5ae"
-KELP_ID = "djbs"
-KELP_PW = "snap1man"
+DJ_KEY = "c6a4a5de"
+KELP_ID = "DJBS"
+KELP_PW = "*snap1manKUMM*"
 
 
 # Email Configuration

@@ -87,9 +87,9 @@ def programming_handler(segs_played, hour, am_pm, logging):
         elif seg_to_play.strip() in constants.TTS_SEGS:
             if seg_to_play.strip() == constants.NEWS_AND_WEATHER_ID:
                 news_successs = news_handler.news_handler()
-                news_fetcher.news_fetcher()
+                #news_fetcher.news_fetcher()
                 weather_success = weather_handler.weather_handler()
-                weather_fetcher.main()
+                #weather_fetcher.main()
                 exit_status = news_successs and not weather_success
                 if (exit_status and logging=="True"):
                     programming_logging_handler.programming_logging_handler(None,None,constants.NEWS_AND_WEATHER_ID)
@@ -97,7 +97,7 @@ def programming_handler(segs_played, hour, am_pm, logging):
 
             elif seg_to_play.strip() == constants.TOWN_AND_CAMPUS_SUBDIRECTORY:
                 exit_status = town_and_campus_handler.town_and_campus_handler()
-                town_and_campus_fetcher.town_and_campus_fetcher()
+                #town_and_campus_fetcher.town_and_campus_fetcher()
                 if (exit_status and logging=="True"):
                     programming_logging_handler.programming_logging_handler(None,None,constants.TOWN_AND_CAMPUS_SUBDIRECTORY)
                 return exit_status
@@ -108,7 +108,6 @@ def programming_handler(segs_played, hour, am_pm, logging):
                 try:
                     tts = gTTS(concert_news_text, lang='en')
                     tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
-                    exit_status=player.play(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
                     if (exit_status and logging=="True"):
                         programming_logging_handler.programming_logging_handler(None,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3",constants.CONCERT_NEWS_SUBDIRECTORY)
                     return exit_status
@@ -124,4 +123,4 @@ def programming_handler(segs_played, hour, am_pm, logging):
             return(0)
 
 if __name__ == '__main__':
-    programming_handler(1, 7, "pm", True)
+    programming_handler(0, 8, "pm", "False")

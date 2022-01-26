@@ -10,6 +10,7 @@ import player
 # Return: The index of the next song to be played, or -1 if the playlist is over
 def playlist_handler(folderPath, songNum):
     songList=sorted(os.listdir(folderPath))
+    print(songList)
     if songNum>=len(songList):
         return -1
     else:
@@ -26,4 +27,4 @@ def playlist_handler(folderPath, songNum):
 if __name__ == "__main__":
     currSong=0
     while(currSong>=0):
-        currSong=playlist_handler("media/playlists/GogoJuic3",currSong)
+        currSong=playlist_handler("../media/playlists/CaleJuic3",currSong)

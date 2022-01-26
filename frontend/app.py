@@ -1,19 +1,19 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 from flask import Flask, render_template, redirect, request
 from random import choice
 import os
 app = Flask(__name__)
-root_dir = "/home/ryan/Documents/automation-rework"
+root_dir = "/home/kmnr/automation-rework/"
 
 @app.route("/")
 def landing_page():
     funny_slider = ""
     logging_message = ""
-    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/frontend/static/slider_values.txt", "r") as f:
+    with open("/home/kmnr/automation-rework/frontend/static/slider_values.txt", "r") as f:
         options = f.readlines()
         funny_slider = choice(options)
 
-    with open("C:/Users/gocar/OneDrive/Documents/College/FS 21/automation-rework/backend/logging.txt", "r") as f:
+    with open("/home/kmnr/automation-rework/backend/logging.txt", "r") as f:
         logging_status = f.read()
         if logging_status.strip() == "True":
             logging_message="Off"
@@ -67,4 +67,4 @@ def toggle_logging():
     return redirect(request.referrer), status
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='192.168.87.36',debug=True)

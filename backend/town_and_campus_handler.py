@@ -12,11 +12,13 @@ def town_and_campus_handler():
         article_to_play = articles_in_directory[0]
         exit_status = play(town_and_campus_directory+"/"+article_to_play)
         #clean up the directory afterwards
+        '''
         try:
             for f in os.listdir(town_and_campus_directory):
                 os.remove(town_and_campus_directory+"/"+f)
         except:
             print("Error removing old town and campus news mp3 files")
+        '''
         return(exit_status)
     else:
         print("no town and campus news found to play!")

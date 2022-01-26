@@ -4,7 +4,7 @@ import configparser
 from constants import WEATHER_API_URL, WEATHER_SCRIPT, MEDIA_ROOT_DIRECTORY, PROGRAMMING_SUBDIRECTORY, WEATHER_SUBDIRECTORY, CONFIG_FILE_PATH
 import time
 from gtts import gTTS
-
+import os
 
 
 def main():
@@ -38,6 +38,7 @@ def main():
                                        , current_humidity, current_weather_description)
         try:
             tts = gTTS(script, lang='en')
+            
         except:
             print("error: gtts refused the request!")
             return 0
@@ -45,6 +46,10 @@ def main():
         # Saves as weather-{year}-{month}-{day}-{hour}-{minute}-{am/pm}.mp3
         filename = "weather-{}.mp3".format(time.strftime("%Y-%m-%d-%I-%M-%p"))
         tts.save(MEDIA_ROOT_DIRECTORY + PROGRAMMING_SUBDIRECTORY + WEATHER_SUBDIRECTORY + filename)
+
+        for f in os.listdir(MEDIA_ROOT_DIRECTORY+PROGRAMMING_SUBDIRECTORY+WEATHER_SUBDIRECTORY):
+            if f != filename:
+                os.remove(MEDIA_ROOT_DIRECTORY+PROGRAMMING_SUBDIRECTORY+WEATHER_SUBDIRECTORY+f)
 
 
 if __name__ == "__main__":

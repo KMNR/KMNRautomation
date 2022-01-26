@@ -1,8 +1,9 @@
 import configparser
 import constants
 from gtts import gTTS
-from newsapi import NewsApiClient
+from newsapi.newsapi_client import NewsApiClient
 import time
+import os
 
 # Prerequisites: None
 # Description: Fetches a news article from NewsAPI and saves a reading of it as an mp3 file in the appropriate folder
@@ -36,6 +37,7 @@ def news_fetcher():
     script = constants.NEWS_SCRIPT.format(article_text,article_source)
 
     try:
+        pass
         tts = gTTS(script, lang='en')
     except:
         print("error: gtts refused the request!")
@@ -46,6 +48,9 @@ def news_fetcher():
 
     print("added news article titled: ",top_headlines['articles'][articleNum]['title'],
         " from source: ",top_headlines['articles'][articleNum]['source']['name'])
+    for f in os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.NEWS_SUBDIRECTORY):
+        if f != filename:
+            os.remove(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.NEWS_SUBDIRECTORY+f)
 
 if __name__ == "__main__":
     news_fetcher()
