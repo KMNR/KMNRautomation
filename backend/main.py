@@ -14,6 +14,7 @@ import programming_handler
 import programming_logging_handler
 import music_logging_handler
 import constants
+import threading
 
 def main():
     random.seed()
@@ -24,7 +25,7 @@ def main():
 
     #start with no playlists or songs played yet
     current_playlist_path = ""
-    recent_playlists = ["","","","","","","","","","","","","",""]
+    recent_playlists = ["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""]
     current_song_index = 0
 
     # set time of last educational segment play to epoch
@@ -38,10 +39,12 @@ def main():
     run_automation = True
 
     #create at least one weather forecast, news article, and town and campus news reading on startup
+    #not necessary if cronjobs are active
+    '''
     news_fetcher.news_fetcher()
     weather_fetcher.main()
     town_and_campus_fetcher.town_and_campus_fetcher()
-
+    '''
 
     # Read configuration file
     cfg = configparser.ConfigParser()
@@ -119,28 +122,12 @@ def main():
         #after a playlist ends,
         if current_song_index==-1:
             #update the list of recently played playlists
-            recent_playlists.pop()
-            recent_playlists.insert(0,current_playlist_path)
+            recent_playlists.pop(0)
+            recent_playlists.append(current_playlist_path)
             #log the playlist
             if logging=="True":
-                music_logging_handler.music_logging_handler(current_playlist_path)
-            #start next playlist from song at index 0
-            current_song_index=0
-            #print(recent_playlists)
-
-        sleep(1)
-
-        current_song_index = playlist_handler.playlist_handler(current_playlist_path, current_song_index)
-        print(constants.ConstantStrings.PLAYING_SONG)
-
-        #after a playlist ends,
-        if current_song_index==-1:
-            #update the list of recently played playlists
-            recent_playlists.pop()
-            recent_playlists.insert(0,current_playlist_path)
-            #log the playlist
-            if logging=="True":
-                music_logging_handler.music_logging_handler(current_playlist_path)
+                logging_thread = threading.Thread(target=music_logging_handler.music_logging_handler(current_playlist_path), name="Music Logging")
+                logging_thread.start()
             #start next playlist from song at index 0
             current_song_index=0
             #print(recent_playlists)

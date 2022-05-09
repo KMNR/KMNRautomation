@@ -19,7 +19,7 @@ def town_and_campus_handler():
         except:
             print("Error removing old town and campus news mp3 files")
         '''
-        return(exit_status)
+        return(exit_status,town_and_campus_directory+"/"+article_to_play)
     else:
         print("no town and campus news found to play!")
         return(0)

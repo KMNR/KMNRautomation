@@ -1,9 +1,10 @@
 import random, os
 from datetime import datetime
-from mutagen.mp3 import MP3
+#from mutagen.mp3 import MP3
 import player
 import constants
 import programming_logging_handler
+import threading
 
 test=False
 
@@ -26,7 +27,8 @@ def station_id_handler(min,logging):
         #player.play(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY)))
         #play a legal or non-legal ID
         if random.choice((0,1))==0:
-            player.play(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY)))
+            logging_thread = threading.Thread(target=player.play(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.NONLEGAL_STATION_ID_SUBDIRECTORY))),name="Logging station ID")
+            logging_thread.start()
         else:
             player.play(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY+random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY+constants.LEGAL_STATION_ID_SUBDIRECTORY)))
 

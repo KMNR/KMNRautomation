@@ -12,6 +12,7 @@ import programming_logging_handler
 import constants
 import csv
 from gtts import gTTS
+import threading
 
 test=True
 
@@ -64,7 +65,10 @@ def programming_handler(segs_played, hour, am_pm, logging):
                 profile_america_filename = "pa"+profile_america_filename[2:]+".mp3"
                 exit_status=player.play(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.PROFILE_AMERICA_SUBDIRECTORY+"/"+profile_america_filename)
                 if (exit_status and logging=="True"):
-                    programming_logging_handler.programming_logging_handler(profile_america_filename,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.PROFILE_AMERICA_SUBDIRECTORY+"/"+profile_america_filename,constants.PROFILE_AMERICA_SUBDIRECTORY)
+                    try:
+                        programming_logging_handler.programming_logging_handler(profile_america_filename,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.PROFILE_AMERICA_SUBDIRECTORY+"/"+profile_america_filename,constants.PROFILE_AMERICA_SUBDIRECTORY)
+                    except:
+                        pass
                 return exit_status
 
             #if there are subdirectories for that programming type, choose a subdirectory and an mp3 file
@@ -74,46 +78,72 @@ def programming_handler(segs_played, hour, am_pm, logging):
                 filePath=constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip() + '/' + chosen_subdirectory + '/' + fileName
                 exit_status = player.play(filePath)
                 if (exit_status and logging=="True"):
-                    programming_logging_handler.programming_logging_handler(fileName,filePath,seg_to_play.strip())
+                    try:    
+                        logging_thread = threading.Thread(target=programming_logging_handler.programming_logging_handler(fileName,filePath,seg_to_play.strip()),name="Logging programming")
+                        logging_thread.start()
+                    except:
+                        pass
                 return exit_status
             else:
-                fileName=random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip()))
+                fileName=""
+                while((".mp3" not in fileName) and (".wav" not in fileName)):
+                    print(fileName)
+                    fileName=random.choice(os.listdir(constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip()))
+                print(fileName)
                 filePath=constants.MEDIA_ROOT_DIRECTORY + constants.PROGRAMMING_SUBDIRECTORY + seg_to_play.strip() + '/' + fileName
                 exit_status=player.play(filePath)
                 if (exit_status and logging=="True"):
-                    programming_logging_handler.programming_logging_handler(fileName,filePath,seg_to_play.strip())
+                    try:
+                        logging_thread = threading.Thread(target=programming_logging_handler.programming_logging_handler(fileName,filePath,seg_to_play.strip()),name="Logging programming")
+                        logging_thread.start()
+                    except:
+                        pass
                 return exit_status
         #town and campus news, news and weather, or concert news
         elif seg_to_play.strip() in constants.TTS_SEGS:
             if seg_to_play.strip() == constants.NEWS_AND_WEATHER_ID:
-                news_successs = news_handler.news_handler()
+                news_success = news_handler.news_handler()
                 #news_fetcher.news_fetcher()
                 weather_success = weather_handler.weather_handler()
                 #weather_fetcher.main()
-                exit_status = news_successs and not weather_success
+                exit_status = news_success and not weather_success
                 if (exit_status and logging=="True"):
-                    programming_logging_handler.programming_logging_handler(None,None,constants.NEWS_AND_WEATHER_ID)
+                    try:
+                        logging_thread = threading.Thread(target=programming_logging_handler.programming_logging_handler(None,None,constants.NEWS_AND_WEATHER_ID),name="Logging news and weather")
+                        logging_thread.start()
+                    except:
+                        pass
                 return exit_status
 
             elif seg_to_play.strip() == constants.TOWN_AND_CAMPUS_SUBDIRECTORY:
-                exit_status = town_and_campus_handler.town_and_campus_handler()
+                exit_status, filePath = town_and_campus_handler.town_and_campus_handler()
                 #town_and_campus_fetcher.town_and_campus_fetcher()
                 if (exit_status and logging=="True"):
-                    programming_logging_handler.programming_logging_handler(None,None,constants.TOWN_AND_CAMPUS_SUBDIRECTORY)
+                    try:
+                        logging_thread = threading.Thread(target=programming_logging_handler.programming_logging_handler(None,filePath,constants.TOWN_AND_CAMPUS_SUBDIRECTORY))
+                        logging_thread.start()
+                    except:
+                        pass
                 return exit_status
 
             elif seg_to_play.strip() == constants.CONCERT_NEWS_SUBDIRECTORY:
-                f = open(constants.BACKEND_ROOT_DIRECTORY+"concert-news.txt")
-                concert_news_text = f.read()
-                try:
-                    tts = gTTS(concert_news_text, lang='en')
-                    tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
-                    if (exit_status and logging=="True"):
-                        programming_logging_handler.programming_logging_handler(None,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3",constants.CONCERT_NEWS_SUBDIRECTORY)
-                    return exit_status
-                except:
-                    print("error: gtts refused the request!")
-                    return 0
+                #f = open(constants.BACKEND_ROOT_DIRECTORY+"concert-news.txt")
+                #concert_news_text = f.read()
+               # try:
+                #tts = gTTS(concert_news_text, lang='en')
+                #print("made it here")
+                #tts.save(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
+                exit_status = player.play(constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3")
+                if (exit_status and logging=="True"):
+                    try:
+                        logging_thread = threading.Thread(target=programming_logging_handler.programming_logging_handler(None,constants.MEDIA_ROOT_DIRECTORY+constants.PROGRAMMING_SUBDIRECTORY+constants.CONCERT_NEWS_SUBDIRECTORY+"/concert_news.mp3",constants.CONCERT_NEWS_SUBDIRECTORY),name="Logging concert news")
+                        logging_thread.start()
+                    except:
+                        pass
+                return exit_status
+                #except:
+                    #print("error: gtts refused the request!")
+                    #return 0
             else:
                 print("couldn't recognize the path as a valid edu segment!")
                 return(0)
@@ -123,4 +153,4 @@ def programming_handler(segs_played, hour, am_pm, logging):
             return(0)
 
 if __name__ == '__main__':
-    programming_handler(0, 8, "pm", "False")
+    programming_handler(0, 1, "pm", "False")

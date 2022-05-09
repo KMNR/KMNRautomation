@@ -50,7 +50,7 @@ def music_logging_handler(playlist_path):
 
     #go back to the page so we can press the commit button
     browser.back()
-    browser.refresh()
+    #browser.refresh()
 
     commit_button = browser.find_element(By.XPATH, "//*[contains (text(), 'Commit')]")
     commit_button.click()

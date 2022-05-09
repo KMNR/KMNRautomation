@@ -1,9 +1,9 @@
 import time
 import os
 from datetime import datetime
-from mutagen.mp3 import MP3
+#from mutagen.mp3 import MP3
 import platform
-import soundfile as sf
+#import soundfile as sf
 import pathlib
 
 test=True
@@ -14,10 +14,10 @@ test=True
 def play(filePath):
     played=1
     if test:
-        print("Playing "+filePath)
+        print("Playing "+filePath+" at "+time.strftime("%a, %d %b %Y %H:%M:%S")+"\n")
     try:
         with open("log.log", 'a+') as f:
-            f.write("Playing"+filePath+"\n")
+            f.write("Playing "+filePath+" at "+time.strftime("%a, %d %b %Y %H:%M:%S")+"\n")
         opSystem = platform.system()
         if opSystem=="Windows":
             played=(os.system("start "+"\"\" \""+filePath+"\""))

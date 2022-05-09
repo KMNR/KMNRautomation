@@ -53,15 +53,16 @@ def programming_logging_handler(filename,filepath,programming_type):
         print("Couldn't find that type of programming to log!")
         return(0)
 
-    #if we don't know how long the file is, just write the length as 0
+    #if we don't know how long the file is, just write the length as 45 second (the average length of news & weather) 
     if filepath==None:
-        programming_len=0
+        programming_len=45
     else:
         programming_len=MP3(filepath).info.length
 
     opts=FirefoxOptions()
     opts.add_argument("--headless")
     browser = webdriver.Firefox(firefox_options=opts)
+    
     try:
         browser.get('https://'+KELP_ID+':'+KELP_PW+'@kelp.kmnr.org/show')
     except:
@@ -84,8 +85,9 @@ def programming_logging_handler(filename,filepath,programming_type):
     actions = ActionChains(browser)
     if box_id=="news&weather":
         actions.send_keys(Keys.TAB+"News & Weather")
-    if len_sec==0:
-        actions.send_keys(Keys.TAB+str(0)+Keys.ENTER)
+    if len_sec<10:
+        len_sec="0"+str(len_sec)
+        #actions.send_keys(Keys.TAB+str(0)+Keys.ENTER)
     actions.send_keys(Keys.TAB+str(len_min)+":"+str(len_sec)+Keys.ENTER)
     actions.perform()
 
