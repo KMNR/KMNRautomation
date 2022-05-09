@@ -45,9 +45,14 @@ The KMNR Ultimate Music Machine was created to replace the previous automation s
 
 At this point, automation has been successfully started!
 
+## Starting the user interface
+1. Ensure that the location listed in ``app.py`` is the correct location you would like to host the page at
+2. Run the command  ``nohup python3 frontend/app.py &``
+3. The frontend is now hosted at the address you specified in ``app.py``. Kill the process if necessary to turn off the frontend
 
 
 ## How to Use
+Instructions in KMNR Automation Director red book in the KMNR drive
 
 ## Tech Stack
 Python 3.9
