@@ -139,3 +139,7 @@ cython_debug/
 
 .idea/
 *.mp3
+
+#ignores huge crash handler logs
+*.log
+*.log.[0-9]
