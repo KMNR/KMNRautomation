@@ -139,3 +139,7 @@ cython_debug/
 
 .idea/
 *.mp3
+
+#
+*.log
+*.log.[0-9]
