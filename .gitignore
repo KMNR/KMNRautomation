@@ -140,6 +140,6 @@ cython_debug/
 .idea/
 *.mp3
 
-#
+# ignores the huge log files for the crash handler
 *.log
 *.log.[0-9]
